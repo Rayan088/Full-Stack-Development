@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Variables - Cart Quantity</title>
+  </head>
+  <body>
+    <!-- Creating buttons -->
+    <button onclick="console.log(`Cart Quantity: ${cartQuantity}`)">
+      <!-- Interpolation/Template string -->
+      Show Quantity
+    </button>
+
+    <button
+      onclick="
+        cartQuantity++; //Shortcut for adding 1
+        console.log(`Cart Quantity: ${cartQuantity}`);
+      "
+    >
+      Add to Cart
+    </button>
+
+    <button
+      onclick="
+        cartQuantity += 2;
+        console.log(`Cart Quantity: ${cartQuantity}`);
+      "
+    >
+      +2
+    </button>
+
+    <button
+      onclick="
+        cartQuantity += 3;
+        console.log(`Cart Quantity: ${cartQuantity}`);
+      "
+    >
+      +3
+    </button>
+
+    <button
+      onclick="
+        cartQuantity = 0;
+        console.log('Cart was reset');
+        console.log(`Cart quantity: ${cartQuantity}`);
+      "
+    >
+      Reset Cart
+    </button>
+
+    <script>
+      // Examples
+      // Use let for variable that can change
+      let variable1 = 3;
+      console.log(variable1); // ; represents end of instruction
+
+      let calculation = 2 + 2;
+      console.log(calculation);
+      console.log(calculation + 2);
+
+      let result = calculation + 2;
+      console.log(result);
+
+      let message = "Hello";
+      console.log(message);
+
+      variable1 = 5; //Re-assigning a value to a variable. Note no let
+      console.log(variable1);
+
+      variable1 = variable1 + 1;
+      console.log(variable1);
+
+      // Use const for variables that will not change
+      const variable2 = 2;
+
+      // var is old version standing for variable
+      var variable3 = 3;
+
+      // Initialising Cart Quantity
+      let cartQuantity = 0;
+    </script>
+  </body>
+</html>
