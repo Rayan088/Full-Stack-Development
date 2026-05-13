@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Basics</title>
+    <style>
+      .red-button {
+        background-color: red;
+        color: white;
+        border: none;
+      }
+
+      .yellow-button {
+        background-color: yellow;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Tooltip is html attribute-->
+    <!-- Onclick lets JS run when clicked, ran after script-->
+    <button title="tooltip" class="red-button" onclick="alert('Hello')">
+      hello
+    </button>
+
+    <!-- Nesting is an element inside an element -->
+    <p>paragraph of <button class="yellow-button">hello</button> text</p>
+
+    <!-- Script to run javascript-->
+    <script>
+      alert("Basics"); //Alert creates a popup
+
+      //Result displayed in console
+      console.log(2 + 2);
+      console.log("some" + "text");
+    </script>
+  </body>
+</html>
