@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Booleans & If Statements</title>
+  </head>
+  <body>
+    <p>Rock Paper Scissors</p>
+    <button
+      onclick="
+        const randomNumber = Math.random(); // Generates random number
+        let computerMove = ''; //Locally scoped in onlick
+
+        if (randomNumber >= 0 && randomNumber <= 1 / 3) {
+          computerMove = 'rock';
+        } else if (randomNumber > 1 / 3 && randomNumber <= 2 / 3) {
+          computerMove = 'paper';
+        } else {
+          computerMove = 'scissors';
+        }
+
+        let result = '';
+        if (computerMove === 'rock') {
+          result = 'Tie';
+        } else if (computerMove === 'paper') {
+          result = 'You lose';
+        } else if (computerMove === 'scissors') {
+          result = 'You win';
+        }
+
+        alert(`You picked rock. Computer picked ${computerMove}. ${result}`);
+      "
+    >
+      Rock
+    </button>
+
+    <button
+      onclick="
+        const randomNumber = Math.random(); // Generates random number
+        let computerMove = ''; //Locally scoped in onlick
+
+        if (randomNumber >= 0 && randomNumber <= 1 / 3) {
+          computerMove = 'rock';
+        } else if (randomNumber > 1 / 3 && randomNumber <= 2 / 3) {
+          computerMove = 'paper';
+        } else {
+          computerMove = 'scissors';
+        }
+
+        let result = '';
+        if (computerMove === 'rock') {
+          result = 'You win';
+        } else if (computerMove === 'paper') {
+          result = 'Tie';
+        } else if (computerMove === 'scissors') {
+          result = 'You lose';
+        }
+
+        alert(`You picked paper. Computer picked ${computerMove}. ${result}`);
+      "
+    >
+      Paper
+    </button>
+
+    <button
+      onclick="
+        const randomNumber = Math.random(); // Generates random number
+        let computerMove = ''; //Locally scoped in onlick
+
+        if (randomNumber >= 0 && randomNumber <= 1 / 3) {
+          computerMove = 'rock';
+        } else if (randomNumber > 1 / 3 && randomNumber <= 2 / 3) {
+          computerMove = 'paper';
+        } else {
+          computerMove = 'scissors';
+        }
+
+        let result = '';
+        if (computerMove === 'rock') {
+          result = 'You lose';
+        } else if (computerMove === 'paper') {
+          result = 'You win';
+        } else if (computerMove === 'scissors') {
+          result = 'Tie';
+        }
+
+        alert(
+          `You picked scissors. Computer picked ${computerMove}. ${result}`,
+        );
+      "
+    >
+      Scissors
+    </button>
+    <script>
+      // Boolean value represents wether a value is true or false
+      console.log(3 > 5);
+
+      // If statements
+      if (true) {
+        console.log("hello");
+      } else {
+        console.log("else");
+      }
+
+      // Driving example
+      const age = 15;
+
+      if (age >= 16) {
+        console.log("You can drive");
+      } else if (age == 15) {
+        console.log("Almost there");
+      } else {
+        console.log("You can not drive");
+      }
+
+      // Falsy values - false, 0, '', NaN, undefined, null
+      // 0 - acts as false
+      if (0) {
+        console.log("falsy");
+      }
+
+      const cartQuantity = 5;
+
+      //NaN - invalid math
+      console.log("text" / 5);
+
+      //Undefined - no value assigned
+      let variable1;
+      console.log(variable1);
+
+      // and logical operator
+      console.log(0.2 >= 0 && 0.2 < 1);
+
+      // Or logical operator
+      console.log(true || false);
+
+      // not logical operator
+      console.log(!true);
+
+      // Terniary operator - shortcut of if and else statement
+      // If variable condition is true, value after ? is assigned, else after :
+      const result2 = true ? "truthy" : "falsy";
+      console.log(result2);
+
+      // Gueard operator - shortcut of if statement
+      // If first condition is false, code shortcuts and doesnt run code on the right
+      const message = false && "hello";
+      console.log(message);
+
+      // Default operator - shortcut of if statement
+      // If first condition is true, code shortcuts and doesnt run code on the right
+      const currency = undefined || "USD";
+      console.log(currency);
+    </script>
+  </body>
+</html>
