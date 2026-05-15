@@ -1,0 +1,89 @@
+<!-- Document Object Model, represents models of the webpage -->
+<!-- The DOM combines JS and HTMl together giving JS control of the webpage-->
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DOM</title>
+  </head>
+  <body>
+    <!-- Youtube button -->
+    <p>Youtube Subscribe Button</p>
+    <button onclick="subscribe()" class="js-yt-button">Subscribe</button>
+
+    <!-- Amazon shipping button-->
+    <p>Amazon Shipping Calculator</p>
+    <p>Orders under $40 = +$10 shipping.</p>
+    <p>Orders over $40 = FREE shipping.</p>
+
+    <!-- onkeydown and onclick are eventlisteners -->
+    <input
+      placeholder="Cost of order"
+      class="js-cost-input"
+      onkeydown="handleCostKeyDown(event)"
+    />
+    <button onclick="calculateTotal()">Calculate</button>
+    <p class="js-total-cost"></p>
+
+    <script>
+      // Window is everything in your browser. It is auto added by JS
+      window.document;
+      window.console.log("window");
+
+      // Subscribe function
+      function subscribe() {
+        const buttonElement = document.querySelector(".js-yt-button");
+
+        if (buttonElement.innerText === "Subscribe") {
+          buttonElement.innerHTML = "Subscribed";
+        } else {
+          buttonElement.innerHTML = "Subscribe";
+        }
+      }
+
+      // Calculate total function
+      function calculateTotal() {
+        const inputElement = document.querySelector(".js-cost-input");
+        let cost = Number(inputElement.value); //DOM outputs string so converting to number
+        if (cost < 40) {
+          cost += 10;
+        }
+
+        document.querySelector(".js-total-cost").innerHTML = `$${cost}`;
+      }
+
+      // Event for pressing enter key
+      function handleCostKeyDown(event) {
+        console.log(event.key);
+        if (event.key === "Enter") {
+          calculateTotal(); // Calculatng total if enter key is pressed
+        }
+      }
+    </script>
+
+    <!-- <button>Button 1</button>
+    <button class="js-button">Button 2</button> -->
+    <!-- <script>
+      /*
+      // Lets us get any element from the page and put it inside JS
+      console.log(document.querySelector("button").innerHTML);
+
+      document.querySelector("button").innerHTML = "changed";
+
+      const buttonElement = document.querySelector(".js-button"); // Access specific object with a class
+
+      console.log(buttonElement);
+
+      document.body.innerHTML = "hello"; // Accesses property of body which is a property of document. Replaces innerhtml with text
+      document.title = "GoodBye"; // Changes title property
+
+      console.log(document.title); // Displays title in console
+      console.log(document.body); // HTML in JS is converted to a JS object
+
+      console.log(document.body.innerHTML);
+      document.body.innerHTML = "<button>Hello</button>"; // Can be changed to JS 
+      */
+    </script> -->
+  </body>
+</html>
