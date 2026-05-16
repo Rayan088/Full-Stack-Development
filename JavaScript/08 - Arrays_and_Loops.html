@@ -25,6 +25,58 @@
 
       myArray.splice(0, 1); // splice removes element. Format: index, no of elements
       console.log(myArray);
+
+      // Loops
+      let i = 1;
+
+      // While loops
+      while (i <= 5) {
+        console.log(i);
+        i++;
+      }
+
+      // While loop with random numbers
+      let randomNumber = 0;
+
+      while (randomNumber < 0.5) {
+        randomNumber = Math.random();
+        console.log(randomNumber);
+      }
+
+      // For loops
+      // This code starts at 1 and increments by 1 whilst i less than 6
+      for (let i = 1; i <= 5; i++) {
+        console.log(i);
+      }
+
+      // Looping through an Array
+      // Gets each value in an array and prints to console
+      const todoList = ["make dinner", "wash dishes", "watch youtube"];
+
+      for (let i = 0; i < todoList.length; i++) {
+        const value = todoList[i];
+        console.log(value);
+      }
+
+      // Accumalator Pattern
+
+      // Adds all numbers to total
+      const nums = [1, 2, 3];
+      let total = 0;
+
+      for (let i = 0; i < nums.length; i++) {
+        total += nums[i];
+        console.log(total);
+      }
+
+      // Multiplies all numbers by 2
+      const numsDoubled = [];
+
+      for (let i = 0; i < nums.length; i++) {
+        multiplied = nums[i] * 2;
+        numsDoubled.push(multiplied);
+        console.log(numsDoubled);
+      }
     </script>
   </body>
 </html>
