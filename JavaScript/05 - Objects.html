@@ -14,12 +14,18 @@
 
     <button onclick="playGame('scissors')">Scissors</button>
 
+    <!-- Placeholders later filled with text using DOM-->
+    <p class="js-result"></p>
+    <p class="js-moves"></p>
+    <p class="js-score"></p>
+
     <button
       onclick="
         score.wins = 0;
         score.losses = 0;
         score.ties = 0;
         localStorage.removeItem('score');
+        updateScoreElement();
       "
     >
       Reset Score
@@ -32,6 +38,8 @@
         losses: 0,
         ties: 0,
       };
+
+      updateScoreElement();
 
       // Function for deciding outcome
       function playGame(playerMove) {
@@ -76,15 +84,24 @@
         // Local storage saves score into storage, more permanent than variables
         localStorage.setItem("score", JSON.stringify(score)); // Name, Item. Online supports strings
 
-        alert(
-          `You picked ${playerMove}. Computer picked ${computerMove}. ${result}
-      Wins: ${score.wins}, Losses: ${score.losses}, Ties ${score.ties}`,
-        );
+        updateScoreElement();
+
+        // Dynamically updates HTML
+        document.querySelector(".js-result").innerHTML = result;
+
+        document.querySelector(".js-moves").innerHTML =
+          `You ${playerMove} - ${computerMove} Computer`;
+      }
+
+      // Function that updates score
+      function updateScoreElement() {
+        document.querySelector(".js-score").innerHTML =
+          `Wins: ${score.wins}, Losses: ${score.losses}, Ties ${score.ties}`;
       }
 
       // Function for picking the computer move
       function pickComputerMove() {
-        const randomNumber = Math.random(); // Generates random number
+        const randomNumber = Math.random(); // Generates random number between 0 and 1
 
         let computerMove = "";
 
@@ -124,7 +141,7 @@
           count: 87,
         },
         fun: function function1() {
-          // Function insie an object
+          // Function inside an object
           console.log("Function inside an object");
         },
       };
@@ -184,7 +201,7 @@
       // Shorthand property and shorthand method
       const object5 = {
         message: message, // Same as code below
-        message, // Shorthand property: if name and variable are the same you can just type out variable once
+        message, // Shorthand property: if name and variable are the same you can type out variable once
 
         method: function function2() {
           console.log("method");
