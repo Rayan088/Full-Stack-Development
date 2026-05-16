@@ -11,13 +11,14 @@ function renderToDoList() {
     for (let i=0; i< todoList.length; i++) {
         const todoObject = todoList[i]
         const {name, dueDate} = todoObject
-        const html = `<p>
-        ${name} ${dueDate}
+        const html =
+        `<div>${name}</div>
+        <div>${dueDate}</div>
         <button onclick="
-        todoList.splice(${i}, 1); // Removes from list
-        renderToDoList();
-        ">Delete</button>
-        </p>`
+            todoList.splice(${i}, 1);
+            renderToDoList();
+        " class="delete-todo-button">Delete</button>
+        `
         todoListHTML += html
     }
 
