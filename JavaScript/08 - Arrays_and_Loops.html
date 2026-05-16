@@ -77,6 +77,53 @@
         numsDoubled.push(multiplied);
         console.log(numsDoubled);
       }
+
+      // More Arrays
+      const array1 = [1, 2, 3];
+      const array2 = array1.slice; // slice copies elements over making different reference
+
+      array1.push(4);
+      console.log(array1);
+      console.log(array2); // Different arrays with different references
+
+      const [firstvalue, secondvalue, thirdvalue] = [1, 2, 3]; // Takes and assigns values
+
+      // More loops
+      for (i = 1; i <= 10; i++) {
+        if (i === 8);
+        {
+          break; // Break feature exits loop early
+        }
+      }
+
+      for (i = 1; i <= 10; i++) {
+        if (i % 3 === 0) {
+          continue; // Continue skips one iteration
+        }
+      }
+
+      let j = 1;
+
+      while (j <= 10) {
+        if (k % 3 === 0) {
+          j++; //In a while loop increment must be done before continue or will result in infinite loop
+          continue;
+        }
+      }
+
+      // Following function uses parameter to double array
+      function doubleArray(nums2) {
+        let total2 = 0;
+
+        for (let i = 0; i < nums2.length; i++) {
+          total += nums2[i];
+          if (total2 > 5) {
+            return; // return statement immediately ends loop
+          }
+        }
+      }
+
+      doubleArray([1, 1, 3, 4, 5, 6]);
     </script>
   </body>
 </html>
