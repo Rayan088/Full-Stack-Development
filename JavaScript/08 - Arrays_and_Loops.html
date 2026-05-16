@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Arrays & Loops</title>
+  </head>
+  <body>
+    <script>
+      // Creating an array
+      const myArray = [10, 20, 30];
+      console.log(myArray);
+
+      console.log(myArray[0]); // Accesses first element. 0 based indexing
+      myArray[0] = 99; // Changes first element in array
+      console.log(myArray);
+
+      [1, "Hello", true, { name: "socks" }, [1, 2]]; // Array can contain various types
+      Array.isArray(myArray); // Checks if value is array. typeof outputs object
+
+      console.log(myArray.length); // Counts length of array
+
+      myArray.push(100); // push adds to end of array
+      console.log(myArray);
+
+      myArray.splice(0, 1); // splice removes element. Format: index, no of elements
+      console.log(myArray);
+    </script>
+  </body>
+</html>
