@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Frontend</title>
+    <style>
+      body {
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 18px;
+      }
+
+      .yt-button {
+        border: none;
+        background-color: red;
+        color: white;
+        font-weight: bold;
+        width: 100px;
+        padding: 10 15;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        padding-right: 15px;
+        padding-left: 15px;
+        border-radius: 50px;
+        cursor: pointer;
+        margin-bottom: 30px;
+      }
+
+      .is-subscribed {
+        background-color: rgb(240, 240, 240);
+        color: black;
+      }
+
+      .cost-input {
+        padding-top: 10px;
+        padding-bottom: 10px;
+        padding-left: 8.5px;
+        font-size: 15px;
+      }
+
+      .calculate-button {
+        font-size: 15px;
+        padding: 11.5px;
+        background-color: green;
+        color: white;
+        border: none;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Youtube button -->
+    <p>Youtube Subscribe Button</p>
+    <!-- Buttons can have multiple classes-->
+    <button onclick="subscribe()" class="js-yt-button yt-button">
+      Subscribe
+    </button>
+
+    <!-- Amazon shipping button-->
+    <p>Amazon Shipping Calculator</p>
+    <p>Orders under $40 = +$10 shipping.</p>
+    <p>Orders over $40 = FREE shipping.</p>
+
+    <!-- onkeydown and onclick are eventlisteners -->
+    <input
+      placeholder="Cost of order"
+      class="js-cost-input cost-input"
+      onkeydown="handleCostKeyDown(event)"
+    />
+    <button onclick="calculateTotal()" class="calculate-button">
+      Calculate
+    </button>
+    <p class="js-total-cost"></p>
+
+    <script>
+      // Window is everything in your browser. It is auto added by JS
+      window.document;
+      window.console.log("window");
+
+      // Subscribe function
+      function subscribe() {
+        const buttonElement = document.querySelector(".js-yt-button");
+
+        if (buttonElement.innerText === "Subscribe") {
+          buttonElement.innerHTML = "Subscribed";
+          buttonElement.classList.add("is-subscribed"); // Adds class to method when clicked
+        } else {
+          buttonElement.innerHTML = "Subscribe";
+          buttonElement.classList.remove("is-subscribed"); // Removes method when clicked again
+        }
+      }
+
+      // Calculate total function
+      function calculateTotal() {
+        const inputElement = document.querySelector(".js-cost-input");
+        let cost = Number(inputElement.value); //DOM outputs string so converting to number
+        if (cost < 40) {
+          cost += 10;
+        }
+
+        document.querySelector(".js-total-cost").innerHTML = `$${cost}`;
+      }
+
+      // Event for pressing enter key
+      function handleCostKeyDown(event) {
+        console.log(event.key);
+        if (event.key === "Enter") {
+          calculateTotal(); // Calculatng total if enter key is pressed
+        }
+      }
+    </script>
+  </body>
+</html>
