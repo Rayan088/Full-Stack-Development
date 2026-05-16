@@ -5,31 +5,74 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Objects</title>
     <style>
+      /* Page CSS*/
       body {
-        background-color: #000000;
+        background-color: rgb(25, 25, 25);
         color: white;
         font-family: Arial, Helvetica, sans-serif;
+        font-size: 17.7px;
       }
 
       .title-text {
         font-size: 30px;
         font-weight: bold;
       }
+
+      /* Button CSS */
+      .move-icon {
+        height: 50px;
+      }
+
+      .move-button {
+        background-color: transparent;
+        border-width: 3px;
+        border-style: solid;
+        border-color: white;
+        width: 140px;
+        height: 140px;
+        border-radius: 100px;
+        margin-right: 10px;
+        cursor: pointer;
+      }
+
+      .result {
+        font-size: 23px;
+        font-weight: bold;
+        padding-top: 30px;
+      }
+
+      .reset-button {
+        height: 36px;
+        padding-right: 15px;
+        padding-left: 15px;
+        font-size: 14px;
+        border: none;
+      }
+
+      .score {
+        padding-top: 48px;
+      }
     </style>
   </head>
   <body>
     <p class="title-text">Rock Paper Scissors</p>
     <!-- Buttons for rpc game -->
-    <button onclick="playGame('rock')">Rock</button>
+    <button onclick="playGame('rock')" class="move-button">
+      <img src="Images/rock-emoji.png" class="move-icon" alt="Rock" />
+    </button>
 
-    <button onclick="playGame('paper')">Paper</button>
+    <button onclick="playGame('paper')" class="move-button">
+      <img src="Images/paper-emoji.png" class="move-icon" alt="Paper" />
+    </button>
 
-    <button onclick="playGame('scissors')">Scissors</button>
+    <button onclick="playGame('scissors')" class="move-button">
+      <img src="Images/scissors-emoji.png" class="move-icon" alt="Scissors" />
+    </button>
 
     <!-- Placeholders later filled with text using DOM-->
-    <p class="js-result"></p>
+    <p class="js-result result"></p>
     <p class="js-moves"></p>
-    <p class="js-score"></p>
+    <p class="js-score score"></p>
 
     <button
       onclick="
@@ -39,6 +82,7 @@
         localStorage.removeItem('score');
         updateScoreElement();
       "
+      class="reset-button"
     >
       Reset Score
     </button>
@@ -102,7 +146,9 @@
         document.querySelector(".js-result").innerHTML = result;
 
         document.querySelector(".js-moves").innerHTML =
-          `You ${playerMove} - ${computerMove} Computer`;
+          `You <img src="Images/${playerMove}-emoji.png" alt="Player Move" class="move-icon" />
+      <img src="Images/${computerMove}-emoji.png" alt="Computer Move" class="move-icon" />
+      Computer;`;
       }
 
       // Function that updates score
