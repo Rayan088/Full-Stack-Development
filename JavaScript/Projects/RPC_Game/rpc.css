@@ -34,12 +34,13 @@ body {
     padding-top: 30px;
 }
 
-.reset-button {
+.reset-button, .auto-play-button {
     height: 36px;
     padding-right: 15px;
     padding-left: 15px;
     font-size: 14px;
     border: none;
+    cursor: pointer;
 }
 
 .score {

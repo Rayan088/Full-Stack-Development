@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Advanced Functions</title>
+  </head>
+  <body>
+    <script>
+      // Functions are values just as numbers and booleans and can be saved in a variable
+      function greeting() {
+        console.log("hello");
+      }
+      greeting();
+
+      // Saving functions in a variable: does not support hoisting (calling before declared)
+      const function1 = function () {
+        //Anonymous function: without a name
+        console.log("hello2");
+      };
+
+      console.log(function1);
+      console.log(typeof function1);
+      function1(); // Callable as it contains a function
+
+      const object1 = {
+        num: 2,
+        fun: function greeting() {
+          //Function saved in an object is called method
+          console.log("hello3");
+        },
+      };
+
+      object1.fun();
+
+      function display(param) {
+        console.log(param);
+      }
+
+      display(2); // Passing value into a function
+
+      // Function can be passed in as paramters
+      function run(param) {
+        param();
+      }
+
+      run(function () {
+        console.log("hello4");
+      });
+
+      // setTimeout schedules a function to run after a delay, (function, delay (ms)
+      setTimeout(function () {
+        console.log("timeout");
+      }, 2000);
+
+      // Asynchronous Code: Code below will run before setTimeout function, it wont wait for a line to finish before going to the next line
+      // Synchronous Code: Will run line by line
+      console.log("next line");
+
+      // setInterval will run a function per time
+      setInterval(function () {
+        console.log("inerval", 2500);
+      });
+    </script>
+  </body>
+</html>
