@@ -58,9 +58,22 @@
       console.log("next line");
 
       // setInterval will run a function per time
+      // Creates a uniqueID which can be stopped by inserting into clearInterval
       setInterval(function () {
-        console.log("inerval", 2500);
-      });
+        console.log("interval");
+      }, 2500);
+
+      // forEach loops through array and saves value and index in parameter
+      ["make dinner", "wash dishes", "watch youtube"].forEach(
+        function (value, index) {
+          if (value === "wash dishes") {
+            // Acts as continue as forEach does not support it
+            return;
+          }
+          console.log(index);
+          console.log(value);
+        },
+      );
     </script>
   </body>
 </html>
