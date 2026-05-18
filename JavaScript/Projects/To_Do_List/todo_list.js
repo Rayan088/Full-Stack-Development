@@ -23,6 +23,7 @@ function renderToDoList() {
     document.querySelector('.js-todo-list').innerHTML = todoListHTML;
     
     // Selected all queries with this class
+    // Closure: if a function has access to a value it will always have access even after deletion. E.g index 
     document.querySelectorAll('.js-delete-todo-button')
     .forEach((deleteButton, index) => {
         deleteButton.addEventListener('click', () => {
