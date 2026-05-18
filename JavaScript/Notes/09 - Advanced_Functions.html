@@ -74,6 +74,39 @@
           console.log(value);
         },
       );
+
+      // Same code but with arrow function
+      ["make dinner", "wash dishes", "watch youtube"].forEach(
+        (value, index) => {
+          if (value === "wash dishes") {
+            return;
+          }
+          console.log(index);
+          console.log(value);
+        },
+      );
+
+      // Arrow functions - shorter way of writing functions
+      const arrowFunction = (param) => {
+        console.log("hello");
+        return 5;
+      };
+      arrowFunction();
+
+      const regularFunction = function (param) {
+        console.log("hello");
+        return 5;
+      };
+      regularFunction();
+
+      const oneParam = (param) => {
+        // Brackets are not needed
+        console.log(param + 1);
+      };
+      oneParam(2);
+
+      const oneLine = () => 2 + 3; // If all code is on same line return and brackets not needed
+      console.log(oneLine());
     </script>
   </body>
 </html>
