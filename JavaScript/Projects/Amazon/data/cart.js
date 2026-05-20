@@ -1,1 +1,2 @@
-window.cart = [];
+// Exporting variable
+export const cart = [];

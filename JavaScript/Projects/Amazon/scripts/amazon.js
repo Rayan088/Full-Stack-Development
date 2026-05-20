@@ -1,3 +1,6 @@
+// Importing variable from file
+import {cart} from '../data/cart.js'
+
 let productsHTML = ''
 
 // Generating html of each product
