@@ -1,4 +1,4 @@
-import {formatCurrency} from "../scripts/utils/money.js";
+import {formatCurrency} from "../../scripts/utils/money.js";
 
 // Jasmine is a JS testing framework
 // describe() groups related tests together, (title)
