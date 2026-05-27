@@ -9,13 +9,21 @@ import {loadCart} from "../data/cart.js";
 // async makes a function return a promise
 // await lets us wait for a promise to finish before going to the next line, can only be used in async function
 async function loadPage() { // shortcut for promise
-    await loadProductsFetch(); // shortcut for then
+    // try and catch blocks for errors in async-wait
+    try {
+        // throw 'error1'; // Manually creates error and saved in error in catch
 
-    await new Promise((resolve) => {
-        loadCart(() => {
-            resolve();
+        await loadProductsFetch(); // shortcut for then
+
+        await new Promise((resolve) => {
+            loadCart(() => {
+                resolve();
+            });
         });
-    });
+
+    } catch (error) {
+        console.log('Unexpected error. Please try again later.');
+    }
 
     renderOrderSummary();
     renderPaymentSummary()

@@ -83,7 +83,7 @@ export let products = []
 
 // Better way to make http request with fetch and promises
 export function loadProductsFetch() {
-  const promise = fetch('https://supersimplebackend.dev/products').then((response) => { // fetch makes http GET request and stores response
+  const promise = fetch('https:/supersimplebackend.dev/products').then((response) => { // fetch makes http GET request and stores response
     return response.json() // Gives json of data to response, When returned it waits for it to finish before proceeding
   }).then((productsData) => {
     products = productsData.map((productDetails) => {
@@ -94,7 +94,9 @@ export function loadProductsFetch() {
     });
 
     console.log('load products')
-  })
+  }).catch(() => { // catch for errors in promises
+    console.log('Unexpected error. Please try again later.');
+  });
 
   return promise;
 }
@@ -120,6 +122,11 @@ export function loadProducts(fun) { // Callback to run in the future
     console.log('load products')
 
     fun();
+  })
+
+  // Event Listener for error handling
+  xhr.addEventListener('error', (error) => {
+    console.log('Unexpected error. Please try again later.')
   })
 
   xhr.open('GET', 'https://supersimplebackend.dev/products');
