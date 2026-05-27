@@ -129,6 +129,11 @@ export function loadProducts(fun) { // Callback to run in the future
     console.log('Unexpected error. Please try again later.')
   })
 
+    // 4 types of backend requests
+    // GET - get something from the backend
+    // POST - backend creates something
+    // PUT - backend updates something
+    // DELETE - backend deletes something
   xhr.open('GET', 'https://supersimplebackend.dev/products');
   xhr.send();
 }
