@@ -81,6 +81,30 @@ object3.method();
 
 export let products = []
 
+// Better way to make http request with fetch and promises
+export function loadProductsFetch() {
+  const promise = fetch('https://supersimplebackend.dev/products').then((response) => { // fetch makes http GET request and stores response
+    return response.json() // Gives json of data to response, When returned it waits for it to finish before proceeding
+  }).then((productsData) => {
+    products = productsData.map((productDetails) => {
+      if (productDetails.type === 'clothing') {
+        return new Clothing(productDetails);
+      }
+      return new Product(productDetails);
+    });
+
+    console.log('load products')
+  })
+
+  return promise;
+}
+
+/*
+loadProductsFetch().then(() => {
+  console.log('Next step')
+});
+*/
+
 // Loads product data from backend and converts into JS object
 export function loadProducts(fun) { // Callback to run in the future
   const xhr = new XMLHttpRequest();
