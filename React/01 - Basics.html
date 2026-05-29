@@ -1,0 +1,38 @@
+<!-- React is an external library that helps us create websites easier 
+React builds your UI as reusable components and efficiently updates the page when data changes 
+-->
+
+<!doctype html>
+<html>
+  <head>
+    <title>React Basics</title>
+  </head>
+  <body>
+    <div class="js-container"></div>
+
+    <!-- Loads react external libraries-->
+    <script src="https://unpkg.com/supersimpledev/react.js"></script>
+    <script src="https://unpkg.com/supersimpledev/react-dom.js"></script>
+
+    <!-- Babel external library - JS compiler
+    React using enhanced version of JS, JSX (JavaScript XML), able to write HTML into JS code
+    Web browser does not understand JSX, so Babel translates it into JS
+    -->
+    <script src="https://unpkg.com/supersimpledev/babel.js"></script>
+    <script type="text/babel">
+      // Converts from JSX to JS
+
+      // Creating element directly with JSX
+      const div = (
+        <div>
+          <button>hello</button>
+          <p>paragraph of text {2 + 2}</p>
+        </div>
+      ); // JS code can be implemented into html
+
+      // Sets up React
+      const container = document.querySelector(".js-container");
+      ReactDOM.createRoot(container).render(div); // render - display elements on the website
+    </script>
+  </body>
+</html>
