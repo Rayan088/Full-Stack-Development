@@ -10,15 +10,53 @@
     <script src="https://unpkg.com/supersimpledev/react.js"></script>
     <script src="https://unpkg.com/supersimpledev/react-dom.js"></script>
 
+    <script src="https://unpkg.com/supersimpledev/chatbot.js"></script>
+
     <script src="https://unpkg.com/supersimpledev/babel.js"></script>
     <script type="text/babel">
-      function ChatInput() {
-        // Component must start with capital letter
+      function ChatInput({ chatMessages, setChatMessages }) {
+        // convention is 'set' for updated function
+        const [inputText, setInputText] = React.useState("");
+
+        function saveInputText(event) {
+          setInputText(event.target.value); // outputs typed element
+        }
+
+        function sendMessage() {
+          const newChatMessages = [
+            ...chatMessages, // spread operator - copied values into new array
+            {
+              message: inputText,
+              sender: "user",
+              id: crypto.randomUUID(),
+            },
+          ];
+
+          setChatMessages(newChatMessages);
+
+          const response = Chatbot.getResponse(inputText);
+          setChatMessages([
+            ...newChatMessages, // spread operator - copied values into new array
+            {
+              message: response,
+              sender: "robot",
+              id: crypto.randomUUID(),
+            },
+          ]);
+
+          setInputText("");
+        }
+
         return (
           <>
             {/*Fragment groups elements together without creating an extra div*/}
-            <input placeholder="Send a message to Chatbot" size="30" />
-            <button>Send</button>
+            <input
+              placeholder="Send a message to Chatbot"
+              size="30"
+              onChange={saveInputText}
+              value={inputText} // controlled input using value input
+            />
+            <button onClick={sendMessage}>Send</button>
           </>
         );
       }
@@ -26,18 +64,9 @@
       function ChatMessage(props) {
         // props is short for properties and make our components reusable
         // props contains all arributes given to component
-        const { message, sender } = props;
-
-        /*
-        if (sender === "robot") {
-          return (
-            <div>
-              <img src="../Images/robot.png" width="50"></img>
-              {message}
-            </div>
-          );
-        }
-          */
+        const { message, sender } = props; // cleaner way of writing the below
+        // const message = props.message
+        // const sender = props.sender
 
         return (
           <div>
@@ -52,17 +81,53 @@
         );
       }
 
-      function App() {
+      function ChatMessages({ chatMessages }) {
         return (
           <>
-            <ChatInput /> {/*Created custom html element*/}
-            <ChatMessage message="Hello chatbot" sender="user" />
-            <ChatMessage message="Hello, How can I help you?" sender="robot" />
-            <ChatMessage message="Can you get me todays date?" sender="user" />
-            <ChatMessage
-              message="Todays date is 27th September"
-              sender="robot"
+            {chatMessages.map((chatMessage) => (
+              <ChatMessage
+                key={chatMessage.id}
+                message={chatMessage.message}
+                sender={chatMessage.sender}
+              />
+            ))}
+          </>
+        );
+      }
+
+      function App() {
+        const [chatMessages, setChatMessages] = React.useState([
+          // State outputs 2 values, current data & updated function
+          // state is memory for a component that auto refreshes what the user sees when changed
+          {
+            message: "Hello chatbot",
+            sender: "user",
+            id: "id1",
+          },
+          {
+            message: "Hello, How can I help you?",
+            sender: "robot",
+            id: "id2",
+          },
+          {
+            message: "Can you get me todays date?",
+            sender: "user",
+            id: "id3",
+          },
+          {
+            message: "Todays date is 27th September",
+            sender: "robot",
+            id: "id4",
+          },
+        ]);
+
+        return (
+          <>
+            <ChatInput
+              chatMessages={chatMessages}
+              setChatMessages={setChatMessages}
             />
+            <ChatMessages chatMessages={chatMessages} />
           </>
         );
       }
