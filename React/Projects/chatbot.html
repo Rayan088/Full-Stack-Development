@@ -2,7 +2,9 @@
 <html>
   <head>
     <title>Chatbot</title>
+    <link rel="stylesheet" href="chatbot.css" />
   </head>
+
   <body>
     <div class="js-container"></div>
 
@@ -48,16 +50,19 @@
         }
 
         return (
-          <>
+          <div className="chat-input-container">
             {/*Fragment groups elements together without creating an extra div*/}
             <input
               placeholder="Send a message to Chatbot"
-              size="30"
+              size="70"
               onChange={saveInputText}
               value={inputText} // controlled input using value input
+              className="message-box"
             />
-            <button onClick={sendMessage}>Send</button>
-          </>
+            <button onClick={sendMessage} className="send-button">
+              Send
+            </button>
+          </div>
         );
       }
 
@@ -69,21 +74,35 @@
         // const sender = props.sender
 
         return (
-          <div>
+          <div
+            className={
+              sender === "user" ? "chat-message-user" : "chat-message-robot"
+            }
+          >
             {sender === "robot" && ( // Implementing and operator
-              <img src="../Images/robot.png" width="50"></img>
+              <img src="../Images/robot.png" className="chat-message-pfp"></img>
             )}
-            {message}
+            <div className="chat-message-text">{message}</div>
             {sender === "user" && (
-              <img src="../Images/user.png" width="50"></img>
+              <img src="../Images/user.png" className="chat-message-pfp"></img>
             )}
           </div>
         );
       }
 
       function ChatMessages({ chatMessages }) {
+        const chatMessagesRef = React.useRef(null); // useRef stores value without re-rendering
+
+        React.useEffect(() => {
+          // useEffect runs when component renders or when react updates page
+          const containerElem = chatMessagesRef.current;
+          if (containerElem) {
+            containerElem.scrollTop = containerElem.scrollHeight;
+          }
+        }, [chatMessages]); // dependency array - controls when useEffect runs, runs when chatMessages is run
+
         return (
-          <>
+          <div className="chat-messages-container" ref={chatMessagesRef}>
             {chatMessages.map((chatMessage) => (
               <ChatMessage
                 key={chatMessage.id}
@@ -91,7 +110,7 @@
                 sender={chatMessage.sender}
               />
             ))}
-          </>
+          </div>
         );
       }
 
@@ -122,13 +141,13 @@
         ]);
 
         return (
-          <>
+          <div className="app-container">
+            <ChatMessages chatMessages={chatMessages} />
             <ChatInput
               chatMessages={chatMessages}
               setChatMessages={setChatMessages}
             />
-            <ChatMessages chatMessages={chatMessages} />
-          </>
+          </div>
         );
       }
 
