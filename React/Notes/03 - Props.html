@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Props</title>
+  </head>
+  <body>
+    <div class="js-container"></div>
+
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <script type="text/babel">
+      // Props are function arguments to components and make components reusable
+      function Greet(props) {
+        const { name, sender } = props;
+        return (
+          <h1>
+            Hello {name} from {sender}
+          </h1>
+        );
+      }
+
+      // Function that shows popup when button is clicked
+      function MyButton({ text, onClick }) {
+        return <button onClick={onClick}> {text}</button>;
+      }
+
+      function App() {
+        function handleButton() {
+          alert("Button Clicked");
+        }
+
+        return (
+          <div>
+            <Greet name="John" sender="Bob" /* Assigning Parameters */ />
+            <MyButton text="Click Me" onClick={handleButton} />
+            <MyButton text="Buy Now" />
+          </div>
+        );
+      }
+
+      const container = document.querySelector(".js-container");
+      ReactDOM.createRoot(container).render(<App />);
+    </script>
+  </body>
+</html>
