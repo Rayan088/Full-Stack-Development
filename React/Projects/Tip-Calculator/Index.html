@@ -25,10 +25,10 @@
         const perPerson = total / peopleNum;
 
         return (
-          <div>
-            <p>Total Bill: {total.toFixed(2)}</p>
-            <p>Tip Amount: {tipAmount.toFixed(2)}</p>
-            <p>Per Person: {perPerson.toFixed(2)}</p>
+          <div class="calculations">
+            <p>Total Bill: {"£" + total.toFixed(2)}</p>
+            <p>Tip Amount: {"£" + tipAmount.toFixed(2)}</p>
+            <p>Per Person: {"£" + perPerson.toFixed(2)}</p>
           </div>
         );
       }
@@ -36,16 +36,17 @@
       function InputFields({ bill, setBill, people, setPeople }) {
         return (
           <div>
-            <h1>Bill Calculator</h1>
             <div>
               <input
+                className="bill-input"
                 value={bill}
                 onChange={(e) => setBill(e.target.value)}
-                placeholder="Enter Total"
+                placeholder="Enter bill amount"
               />
             </div>
             <div>
               <input
+                className="people-input"
                 value={people}
                 onChange={(e) => setPeople(e.target.value)}
                 placeholder="Enter number of people"
@@ -60,15 +61,22 @@
         const [people, setPeople] = React.useState("");
 
         return (
-          <div>
-            <InputFields
-              bill={bill}
-              setBill={setBill}
-              people={people}
-              setPeople={setPeople}
-            />
+          <div className="container">
+            <div>
+              <h1 class="title">Bill Calculator</h1>
+              <p class="description">
+                Enter your bill and number of people to calculate the tip
+              </p>
 
-            <Calculations bill={bill} people={people} />
+              <InputFields
+                bill={bill}
+                setBill={setBill}
+                people={people}
+                setPeople={setPeople}
+              />
+
+              <Calculations bill={bill} people={people} />
+            </div>
           </div>
         );
       }
