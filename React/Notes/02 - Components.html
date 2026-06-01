@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Components</title>
+  </head>
+  <body>
+    <div class="js-container"></div>
+
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <script type="text/babel">
+      // A component is a JS function that returns UI
+      // Components let you reuse UI and split big pages into small pieces
+      function Hello() {
+        return <h1>Hello world</h1>;
+      }
+
+      function MyButton() {
+        return <button>Click me (Nothing Happens)</button>;
+      }
+
+      // App is the main root component
+      function App() {
+        return (
+          <div>
+            <Hello />
+            <p>This is my first react component</p>
+            <MyButton />
+          </div>
+        );
+      }
+
+      const container = document.querySelector(".js-container");
+      ReactDOM.createRoot(container).render(<App />);
+    </script>
+  </body>
+</html>
