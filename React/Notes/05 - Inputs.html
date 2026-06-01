@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Controlled Inputs</title>
+    <!-- Controlled Inputs - Input field whose value is controlle by react state instead of browser DOM-->
+  </head>
+  <body>
+    <div class="js-container"></div>
+
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <script type="text/babel">
+      function App() {
+        const [name, setName] = React.useState("");
+
+        return (
+          <div>
+            <h1>Controlled Input</h1>
+            <input
+              value={name}
+              onChange={(e) => setName(e.target.value)} // Gets current text inside input box
+              placeholder="Type here..."
+            />
+
+            <p>React State: {name}</p>
+            <p>Input value: {name}</p>
+          </div>
+        );
+      }
+      const container = document.querySelector(".js-container");
+      ReactDOM.createRoot(container).render(<App />);
+    </script>
+  </body>
+</html>
