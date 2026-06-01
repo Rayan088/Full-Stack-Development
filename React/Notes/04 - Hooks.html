@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+  <!-- Hooks are functions that let function components use React features-->
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>State</title>
+  </head>
+  <body>
+    <div class="js-container"></div>
+
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <script type="text/babel">
+      function App() {
+        // useState lets a component remember data and update UI when it changes (Memory + re-render)
+        // count - current value, setCount - function to update state
+        const [count, setCount] = React.useState(0);
+
+        // Component to randomly increase number
+        function randomIncrease() {
+          const randomNumber = Math.random();
+          if (randomNumber > 0.5) {
+            setCount(count + 1); // Updating value
+          } else {
+            setCount(count + 2); // Updating value
+          }
+        }
+
+        // UseEffect runs code after every render
+        React.useEffect(() => {
+          console.log("Count is now:", count);
+        }, [randomIncrease]); // runs after every increase function
+
+        return (
+          <div>
+            <h1>{count}</h1>
+            <button onClick={randomIncrease}>+</button>
+          </div>
+        );
+      }
+
+      const container = document.querySelector(".js-container");
+      ReactDOM.createRoot(container).render(<App />);
+    </script>
+  </body>
+</html>
