@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tip Calculator</title>
+    <link rel="stylesheet" href="Index.css" />
+  </head>
+
+  <body>
+    <div class="js-container"></div>
+
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <script type="text/babel">
+      function Calculations({ bill, people }) {
+        const billNum = Number(bill);
+        const peopleNum = Number(people);
+
+        const tipAmount = billNum * 0.2;
+        const total = billNum + tipAmount;
+        const perPerson = total / peopleNum;
+
+        return (
+          <div>
+            <p>Total Bill: {total.toFixed(2)}</p>
+            <p>Tip Amount: {tipAmount.toFixed(2)}</p>
+            <p>Per Person: {perPerson.toFixed(2)}</p>
+          </div>
+        );
+      }
+
+      function InputFields({ bill, setBill, people, setPeople }) {
+        return (
+          <div>
+            <h1>Bill Calculator</h1>
+            <div>
+              <input
+                value={bill}
+                onChange={(e) => setBill(e.target.value)}
+                placeholder="Enter Total"
+              />
+            </div>
+            <div>
+              <input
+                value={people}
+                onChange={(e) => setPeople(e.target.value)}
+                placeholder="Enter number of people"
+              />
+            </div>
+          </div>
+        );
+      }
+
+      function App() {
+        const [bill, setBill] = React.useState("");
+        const [people, setPeople] = React.useState("");
+
+        return (
+          <div>
+            <InputFields
+              bill={bill}
+              setBill={setBill}
+              people={people}
+              setPeople={setPeople}
+            />
+
+            <Calculations bill={bill} people={people} />
+          </div>
+        );
+      }
+
+      const container = document.querySelector(".js-container");
+      ReactDOM.createRoot(container).render(<App />);
+    </script>
+  </body>
+</html>
