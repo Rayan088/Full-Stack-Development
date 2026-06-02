@@ -30,3 +30,4 @@ dist-ssr
 /package.json
 /README.md 
 /vite.config.js
+/.env
