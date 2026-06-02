@@ -22,13 +22,24 @@
 
         const tipAmount = billNum * 0.2;
         const total = billNum + tipAmount;
-        const perPerson = total / peopleNum;
+        const perPerson = peopleNum > 0 ? total / peopleNum : total;
 
         return (
-          <div class="calculations">
-            <p>Total Bill: {"£" + total.toFixed(2)}</p>
-            <p>Tip Amount: {"£" + tipAmount.toFixed(2)}</p>
-            <p>Per Person: {"£" + perPerson.toFixed(2)}</p>
+          <div className="calculations">
+            <div className="row">
+              <span className="total-bill">Total Bill</span>
+              <span className="num-total-bill">£{total.toFixed(2)}</span>
+            </div>
+
+            <div className="row">
+              <span className="tip-amount">Tip Amount (20%)</span>
+              <span className="num-tip-amount">£{tipAmount.toFixed(2)}</span>
+            </div>
+
+            <div className="row">
+              <span className="per-person">Per Person</span>
+              <span className="num-per-person">£{perPerson.toFixed(2)}</span>
+            </div>
           </div>
         );
       }
@@ -37,19 +48,23 @@
         return (
           <div>
             <div>
+              <p className="bill-text">Bill Total</p>
               <input
                 className="bill-input"
                 value={bill}
                 onChange={(e) => setBill(e.target.value)}
                 placeholder="Enter bill amount"
+                size="40"
               />
             </div>
             <div>
+              <p className="people-text">Number of People</p>
               <input
                 className="people-input"
                 value={people}
                 onChange={(e) => setPeople(e.target.value)}
                 placeholder="Enter number of people"
+                size="40"
               />
             </div>
           </div>
@@ -63,7 +78,7 @@
         return (
           <div className="container">
             <div>
-              <h1 class="title">Bill Calculator</h1>
+              <h1 class="title">Tip Calculator</h1>
               <p class="description">
                 Enter your bill and number of people to calculate the tip
               </p>
