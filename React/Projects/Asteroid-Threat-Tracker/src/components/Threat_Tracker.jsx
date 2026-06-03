@@ -31,8 +31,14 @@ const Threat_Tracker = () => {
     }, [])
 
     return (
-        <div>
-            <h1>Asteroid Threat Tracker</h1>
+        <div className='page'>
+            <div className='title'>
+                <p>Asteroid Threat Tracker</p>
+            </div>
+
+            <div className='date'>
+                <p>Date: 03 June 2026</p>
+            </div>
         </div>
     )
 }
