@@ -31,15 +31,59 @@ const Threat_Tracker = () => {
     }, [])
 
     return (
-        <div className='page'>
-            <div className='title'>
-                <p>Asteroid Threat Tracker</p>
+        <>
+            <div className='page'>
+                <div className='title'>
+                    <p>Asteroid Threat Tracker</p>
+                </div>
+
+                <div className='date'>
+                    <p>Date: 03 June 2026</p>
+                </div>
             </div>
 
-            <div className='date'>
-                <p>Date: 03 June 2026</p>
+            <div className='content'>
+                <div className='grid'>
+                    <div className='card'>
+                        <p>Closest asteroid</p>
+                        <p>Astroid Name</p>
+                        <p>Distance</p>
+                        <p>100000 Km</p>
+                    </div>
+
+                    <div className='card'>
+                        <p>Largest Asteroid</p>
+                        <p>50 KM</p>
+                        <p>Diameter</p>
+                    </div>
+
+                    <div className='card'>
+                        <p>Smallest Asteroid</p>
+                        <p>0.012 Km</p>
+                        <p>Diameter</p>
+                    </div>
+
+                    <div className="card">
+                        <p>Potentially hazardous</p>
+                        <p>21</p>
+                        <p>Asteroids</p>
+                    </div>
+
+                    <div className='card'>
+                        <p>Most threatening</p>
+                        <p>Asteroid Name</p>
+                        <p>Threat score</p>
+                        <p>89.7/100</p>
+                    </div>
+
+                    <div className="card">
+                        <p>Fastest asteroid</p>
+                        <p>126.540 km/h</p>
+                        <p>Velocity</p>
+                    </div>
+                </div>
             </div>
-        </div>
+        </>
     )
 }
 
