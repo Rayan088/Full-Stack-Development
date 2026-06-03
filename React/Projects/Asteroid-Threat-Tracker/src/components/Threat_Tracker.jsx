@@ -24,6 +24,18 @@ const Threat_Tracker = () => {
             const asteroidArray = Object.values(data.near_earth_objects).flat();
             console.log("ALL ASTEROIDS:", asteroidArray);
 
+            let closestAsteroid = asteroidArray[0]
+
+            for (const asteroid of asteroidArray) {
+                const distance = Number(asteroid.close_approach_data[0].miss_distance.lunar)
+
+                const closestDistance = Number(closestAsteroid.close_approach_data[0].miss_distance.lunar)
+
+                if (distance < closestDistance) {
+                    closestAsteroid = asteroid;
+                }
+            }
+
             let smallestAsteroid = asteroidArray[0]
             let largestAsteroid = asteroidArray[0]
 
@@ -46,9 +58,32 @@ const Threat_Tracker = () => {
                 }
             }
 
+            let hazardousCounter = 0
+
+            for (const asteroid of asteroidArray) {
+                if (asteroid.is_potentially_hazardous_asteroid) {
+                    hazardousCounter = hazardousCounter + 1;
+                }
+            }
+
+            let fastestAsteroid = 0
+
+            for (const asteroid of asteroidArray) {
+                const velocity = Number(asteroid.close_approach_data[0].relative_velocity.kilometers_per_hour || 0)
+                
+                if (velocity > fastestAsteroid) {
+                    fastestAsteroid = velocity
+                }
+            }
+
+
+
             setAsteroidData({
                 smallestAsteroid: smallestAsteroid,
-                largestAsteroid: largestAsteroid                
+                largestAsteroid: largestAsteroid,
+                hazardousCounter: hazardousCounter,
+                fastestAsteroid: fastestAsteroid,
+                closestAsteroid: closestAsteroid
             })
 
         } catch (error) {
@@ -76,9 +111,9 @@ const Threat_Tracker = () => {
                 <div className='grid'>
                     <div className='card'>
                         <p>Closest asteroid</p>
-                        <p>Astroid Name</p>
+                        <p>{asteroidData?.closestAsteroid?.name}</p>
                         <p>Distance</p>
-                        <p>100000 Km</p>
+                        <p>{Number(asteroidData?.closestAsteroid?.close_approach_data?.[0]?.miss_distance?.lunar)?.toFixed(3)} Lunar Years</p>
                     </div>
 
                     <div className='card'>
@@ -93,15 +128,15 @@ const Threat_Tracker = () => {
                     <div className='card'>
                         <p>Smallest Asteroid</p>
                         <p>{(
-                            (asteroidData?.largestAsteroid?.estimated_diameter.kilometers.estimated_diameter_min + 
-                            asteroidData?.largestAsteroid?.estimated_diameter.kilometers.estimated_diameter_min) / 2).toFixed(3)}
+                            (asteroidData?.smallestAsteroid?.estimated_diameter.kilometers.estimated_diameter_min + 
+                            asteroidData?.smallestAsteroid?.estimated_diameter.kilometers.estimated_diameter_max) / 2).toFixed(3)}
                         </p>
                         <p>Diameter</p>
                     </div>
 
                     <div className="card">
                         <p>Potentially hazardous</p>
-                        <p>21</p>
+                        <p>{asteroidData?.hazardousCounter}</p>
                         <p>Asteroids</p>
                     </div>
 
@@ -109,12 +144,12 @@ const Threat_Tracker = () => {
                         <p>Most threatening</p>
                         <p>Asteroid Name</p>
                         <p>Threat score</p>
-                        <p>89.7/100</p>
+                        <p>89.7/100 (Placeholder)</p>
                     </div>
 
                     <div className="card">
                         <p>Fastest asteroid</p>
-                        <p>126.540 km/h</p>
+                        <p>{asteroidData?.fastestAsteroid?.toFixed(3)} km/h</p>
                         <p>Velocity</p>
                     </div>
                 </div>
