@@ -78,8 +78,8 @@ const Threat_Tracker = () => {
                 </div>
             </div>
 
-            <div className='content'>
-                <div className='grid'>
+            <div className='dashboard'>
+                <div className='stats-grid'>
                     <div className='card'>
                         <p>Closest asteroid</p>
                         <p>{asteroidData?.closestAsteroid?.name}</p>
@@ -122,6 +122,23 @@ const Threat_Tracker = () => {
                         <p>Fastest asteroid</p>
                         <p>{asteroidData?.fastestAsteroid?.toFixed(3)} km/h</p>
                         <p>Velocity</p>
+                    </div>
+                </div>
+
+                <div className='charts-section'>
+                    <div className='top-charts'>
+                        <div className='chart-box'>
+                            <p>Asteroids per day</p>
+                        </div>
+
+                        <div className='chart-box pie-chart'>
+                            <p>Hazardous vs Safe</p>
+                        </div>
+
+                        <div className='chart-box wide-chart'>
+                            <p>Velocity Distribution</p>
+                        </div>
+                        
                     </div>
                 </div>
             </div>

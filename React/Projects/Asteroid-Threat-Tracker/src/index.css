@@ -13,4 +13,10 @@
   min-height: 100vh;
   display: grid;
   background-color: black;
+
+  background-image: url(./assets/Background-image.png);
+  background-size: cover;              /* Best option - stretches without too much distortion */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
