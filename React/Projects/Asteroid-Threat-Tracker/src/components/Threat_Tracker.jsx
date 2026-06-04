@@ -81,47 +81,47 @@ const Threat_Tracker = () => {
             <div className='dashboard'>
                 <div className='stats-grid'>
                     <div className='card'>
-                        <p>Closest asteroid</p>
-                        <p>{asteroidData?.closestAsteroid?.name}</p>
-                        <p>Distance</p>
-                        <p>{Number(asteroidData?.closestAsteroid?.close_approach_data?.[0]?.miss_distance?.lunar)?.toFixed(3)} Lunar Distances</p>
+                        <p className='sub-title-text'>Closest asteroid</p>
+                        <p className='sub-title-data'>{asteroidData?.closestAsteroid?.name}</p>
+                        <p className='sub-title-info'>Distance</p>
+                        <p className='sub-title-data2'>{Number(asteroidData?.closestAsteroid?.close_approach_data?.[0]?.miss_distance?.lunar)?.toFixed(3)} LD</p>
                     </div>
 
                     <div className='card'>
-                        <p>Largest Asteroid</p>
-                        <p>{(
+                        <p className='sub-title-text'>Largest Asteroid</p>
+                        <p className='sub-title-data'>{(
                             (asteroidData?.largestAsteroid?.estimated_diameter.kilometers.estimated_diameter_min + 
                             asteroidData?.largestAsteroid?.estimated_diameter.kilometers.estimated_diameter_max) / 2).toFixed(3)} km
                         </p>
-                        <p>Diameter</p>
+                        <p className='sub-title-info'>Diameter</p>
                     </div>
 
                     <div className='card'>
-                        <p>Smallest Asteroid</p>
-                        <p>{(
+                        <p className='sub-title-text'>Smallest Asteroid</p>
+                        <p className='sub-title-data'>{(
                             (asteroidData?.smallestAsteroid?.estimated_diameter.kilometers.estimated_diameter_min + 
                             asteroidData?.smallestAsteroid?.estimated_diameter.kilometers.estimated_diameter_max) / 2).toFixed(3)}
                         </p>
-                        <p>Diameter</p>
+                        <p className='sub-title-info'>Diameter</p>
                     </div>
 
                     <div className="card">
-                        <p>Potentially hazardous</p>
-                        <p>{asteroidData?.hazardousCounter}</p>
-                        <p>Asteroids</p>
+                        <p className='sub-title-text'>Potentially hazardous</p>
+                        <p className='sub-title-data'>{asteroidData?.hazardousCounter}</p>
+                        <p className='sub-title-info'>Asteroids</p>
                     </div>
 
                     <div className='card'>
-                        <p>Most threatening</p>
-                        <p>{asteroidData?.mostThreatening?.name}</p>
-                        <p>Threat score</p>
-                        <p>{Math.round(asteroidData?.highestThreatScore)}/100</p>
+                        <p className='sub-title-text'>Most threatening</p>
+                        <p className='sub-title-data'>{asteroidData?.mostThreatening?.name}</p>
+                        <p className='sub-title-info'>Threat score</p>
+                        <p className='sub-title-data2'>{Math.round(asteroidData?.highestThreatScore)}/100</p>
                     </div>
 
                     <div className="card">
-                        <p>Fastest asteroid</p>
-                        <p>{asteroidData?.fastestAsteroid?.toFixed(3)} km/h</p>
-                        <p>Velocity</p>
+                        <p className='sub-title-text'>Fastest asteroid</p>
+                        <p className='sub-title-data'>{asteroidData?.fastestAsteroid?.toFixed(2)} km/h</p>
+                        <p className='sub-title-info'>Velocity</p>
                     </div>
                 </div>
 

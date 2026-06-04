@@ -56,6 +56,37 @@
     min-width: 400px;
 }
 
+.sub-title-text {
+    font-size: 18px;
+    font-weight: 500;
+    color: #b4b8d0;
+    padding-bottom: 12px;
+    padding-left: 180px;
+}
+
+.sub-title-data {
+    font-size: 33px;
+    font-weight: 600;
+    color: #ffffff;
+    padding-bottom: 14px;
+    padding-left: 180px;
+}
+
+.sub-title-data2 {
+    font-size: 31px;
+    font-weight: 600;
+    color: rgb(60, 17, 160);
+    padding-left: 180px;
+}
+
+.sub-title-info {
+    font-size: 19px;
+    font-weight: 400px;
+    color: #b0b5d5;
+    padding-bottom: 8px;
+    padding-left: 180px;
+}
+
 .charts-section {
     display: flex;
     flex-direction: column;
