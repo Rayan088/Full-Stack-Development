@@ -1,5 +1,13 @@
 import { useEffect, useState } from 'react';
 import './Threat_Tracker.css'
+import {
+    getClosestAsteroid,
+    getSmallestAsteroid,
+    getLargestAsteroid,
+    getHazardousCount,
+    getFastestAsteroid,
+    getMostThreateningAsteroid
+} from '../utils/asteroidCalculations'
 
 const Threat_Tracker = () => {
 
@@ -24,66 +32,29 @@ const Threat_Tracker = () => {
             const asteroidArray = Object.values(data.near_earth_objects).flat();
             console.log("ALL ASTEROIDS:", asteroidArray);
 
-            let closestAsteroid = asteroidArray[0]
+            const closestAsteroid = getClosestAsteroid(asteroidArray);
 
-            for (const asteroid of asteroidArray) {
-                const distance = Number(asteroid.close_approach_data[0].miss_distance.lunar)
+            const smallestAsteroid = getSmallestAsteroid(asteroidArray);
 
-                const closestDistance = Number(closestAsteroid.close_approach_data[0].miss_distance.lunar)
+            const largestAsteroid = getLargestAsteroid(asteroidArray);
 
-                if (distance < closestDistance) {
-                    closestAsteroid = asteroid;
-                }
-            }
+            const hazardousCounter = getHazardousCount(asteroidArray);
 
-            let smallestAsteroid = asteroidArray[0]
-            let largestAsteroid = asteroidArray[0]
+            const fastestAsteroid = getFastestAsteroid(asteroidArray);
 
-            for (const asteroid of asteroidArray) {
-                const diameter = (asteroid.estimated_diameter.kilometers.estimated_diameter_min + 
-                    asteroid.estimated_diameter.kilometers.estimated_diameter_max) / 2
-                
-                const smallestDiameter = (smallestAsteroid.estimated_diameter.kilometers.estimated_diameter_min +
-                    smallestAsteroid.estimated_diameter.kilometers.estimated_diameter_max) / 2
-
-                const largestDiameter = (largestAsteroid.estimated_diameter.kilometers.estimated_diameter_min +
-                    largestAsteroid.estimated_diameter.kilometers.estimated_diameter_max) / 2
-
-                if (diameter < smallestDiameter) {
-                    smallestAsteroid = asteroid
-                }
-
-                if (diameter > largestDiameter) {
-                    largestAsteroid = asteroid
-                }
-            }
-
-            let hazardousCounter = 0
-
-            for (const asteroid of asteroidArray) {
-                if (asteroid.is_potentially_hazardous_asteroid) {
-                    hazardousCounter = hazardousCounter + 1;
-                }
-            }
-
-            let fastestAsteroid = 0
-
-            for (const asteroid of asteroidArray) {
-                const velocity = Number(asteroid.close_approach_data[0].relative_velocity.kilometers_per_hour || 0)
-                
-                if (velocity > fastestAsteroid) {
-                    fastestAsteroid = velocity
-                }
-            }
-
-
+            const {
+                asteroid: mostThreatening,
+                score: highestThreatScore
+            } = getMostThreateningAsteroid(asteroidArray);
 
             setAsteroidData({
                 smallestAsteroid: smallestAsteroid,
                 largestAsteroid: largestAsteroid,
                 hazardousCounter: hazardousCounter,
                 fastestAsteroid: fastestAsteroid,
-                closestAsteroid: closestAsteroid
+                closestAsteroid: closestAsteroid,
+                mostThreatening,
+                highestThreatScore
             })
 
         } catch (error) {
@@ -113,7 +84,7 @@ const Threat_Tracker = () => {
                         <p>Closest asteroid</p>
                         <p>{asteroidData?.closestAsteroid?.name}</p>
                         <p>Distance</p>
-                        <p>{Number(asteroidData?.closestAsteroid?.close_approach_data?.[0]?.miss_distance?.lunar)?.toFixed(3)} Lunar Years</p>
+                        <p>{Number(asteroidData?.closestAsteroid?.close_approach_data?.[0]?.miss_distance?.lunar)?.toFixed(3)} Lunar Distances</p>
                     </div>
 
                     <div className='card'>
@@ -142,9 +113,9 @@ const Threat_Tracker = () => {
 
                     <div className='card'>
                         <p>Most threatening</p>
-                        <p>Asteroid Name</p>
+                        <p>{asteroidData?.mostThreatening?.name}</p>
                         <p>Threat score</p>
-                        <p>89.7/100 (Placeholder)</p>
+                        <p>{Math.round(asteroidData?.highestThreatScore)}/100</p>
                     </div>
 
                     <div className="card">
