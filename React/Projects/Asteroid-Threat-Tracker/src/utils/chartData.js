@@ -4,15 +4,18 @@ export const getAsteroidsPerDay = (asteroidArray) => {
 
     for (const asteroid of asteroidArray) {
         const date = asteroid.close_approach_data[0].close_approach_date_full
+        const shortDate = date.split(" ")[0].split("-").slice(1).join("-")
 
-        if (AsteroidsPerDay[date]) {
-            AsteroidsPerDay[date]++
+        if (AsteroidsPerDay[shortDate]) {
+            AsteroidsPerDay[shortDate]++
         } else {
-            AsteroidsPerDay[date] = 1
+            AsteroidsPerDay[shortDate] = 1
         }
     }
 
-    return AsteroidsPerDay
+    return Object.entries(AsteroidsPerDay).map(([shortDate, count]) => ({
+            shortDate, count})
+    )
 }
 
 // Calculation of hazardous vs safe asteroids
@@ -51,18 +54,18 @@ export const getVelocityDistribution = (asteroidArray) => {
     }
 
     for (const asteroid of asteroidArray) {
-        const velocity = Number(asteroid.close_approach_data[0].relative_velocity.kilometers_per_hour)
+        const velocity = Number(asteroid.close_approach_data[0].relative_velocity.kilometers_per_hour || 0)
 
         if (velocity < 20000) {
             velocityBins["0-20k"]++
         } else if (velocity < 40000) {
-            velocityBins["20-40k"]++
+            velocityBins["20k-40k"]++
         } else if (velocity < 60000) {
-            velocityBins["40-60k"]++ 
+            velocityBins["40k-60k"]++ 
         } else if (velocity < 80000) {
-            velocityBins["60-80k"]++ 
+            velocityBins["60k-80k"]++ 
         } else {
-            velocity["80k+"]++
+            velocityBins["80k+"]++
         }
     }
 

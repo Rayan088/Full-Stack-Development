@@ -8,6 +8,7 @@ import {
     getFastestAsteroid,
     getMostThreateningAsteroid
 } from '../utils/asteroidCalculations'
+
 import asteroidImg1 from '../assets/asteroid_1.png'
 import asteroidImg2 from '../assets/asteroid_2.png'
 import asteroidImg3 from '../assets/asteroid_3.png'
@@ -15,6 +16,11 @@ import dangerLogo from '../assets/danger_logo.png'
 import threatLogo from '../assets/threat_logo.png'
 import speedLogo from '../assets/speed_logo.png'
 
+import AsteoidsPerDayChart from './charts/AsteroidsPerDayChart'
+import HazardDistributionChart from './charts/HazardDistributionChart';
+import VelocityDistributionChart from './charts/VelocityDistributionChart';
+
+import {getAsteroidsPerDay, getHazardousAsteroids, getVelocityDistribution} from '../utils/chartData';
 
 const Threat_Tracker = () => {
 
@@ -39,14 +45,14 @@ const Threat_Tracker = () => {
             const asteroidArray = Object.values(data.near_earth_objects).flat();
             console.log("ALL ASTEROIDS:", asteroidArray);
 
+            const asteroidsPerDay = getAsteroidsPerDay(asteroidArray);
+            const hazardousAsteroids = getHazardousAsteroids(asteroidArray);
+            const velocityDistribution = getVelocityDistribution(asteroidArray);
+
             const closestAsteroid = getClosestAsteroid(asteroidArray);
-
             const smallestAsteroid = getSmallestAsteroid(asteroidArray);
-
             const largestAsteroid = getLargestAsteroid(asteroidArray);
-
             const hazardousCounter = getHazardousCount(asteroidArray);
-
             const fastestAsteroid = getFastestAsteroid(asteroidArray);
 
             const {
@@ -55,13 +61,17 @@ const Threat_Tracker = () => {
             } = getMostThreateningAsteroid(asteroidArray);
 
             setAsteroidData({
-                smallestAsteroid: smallestAsteroid,
-                largestAsteroid: largestAsteroid,
-                hazardousCounter: hazardousCounter,
-                fastestAsteroid: fastestAsteroid,
-                closestAsteroid: closestAsteroid,
+                smallestAsteroid,
+                largestAsteroid,
+                hazardousCounter,
+                fastestAsteroid,
+                closestAsteroid,
                 mostThreatening,
-                highestThreatScore
+                highestThreatScore,
+
+                asteroidsPerDay,
+                hazardousAsteroids,
+                velocityDistribution
             })
 
         } catch (error) {
@@ -167,14 +177,17 @@ const Threat_Tracker = () => {
                     <div className='top-charts'>
                         <div className='chart-box'>
                             <p>Asteroids per day</p>
+                            <AsteoidsPerDayChart data={asteroidData?.asteroidsPerDay || []}/>
                         </div>
 
                         <div className='chart-box pie-chart'>
                             <p>Hazardous vs Safe</p>
+                            <HazardDistributionChart data={asteroidData?.hazardousAsteroids || []}/>
                         </div>
 
                         <div className='chart-box wide-chart'>
-                            <p>Velocity Distribution</p>
+                            <p>Velocity Distriubtions (km/h)</p>
+                            <VelocityDistributionChart data={asteroidData?.velocityDistribution || []}/>
                         </div>
                         
                     </div>
