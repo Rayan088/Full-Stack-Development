@@ -10,7 +10,7 @@ import {
 const VelocityDistributionChart = ({ data }) => {
     return (
         <ResponsiveContainer width="100%" height={300}>
-            <BarChart data={data}>
+            <BarChart data={data} margin={{ left: -35 }}>
 
                 <defs>
                     <linearGradient id="barGradient" x1="0" y1="1" x2="0" y2="0">

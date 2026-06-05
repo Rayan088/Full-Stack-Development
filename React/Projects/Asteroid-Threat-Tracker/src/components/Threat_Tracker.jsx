@@ -176,17 +176,17 @@ const Threat_Tracker = () => {
                 <div className='charts-section'>
                     <div className='top-charts'>
                         <div className='chart-box'>
-                            <p>Asteroids per day</p>
+                            <p className='chart-title'>Asteroids per day</p>
                             <AsteoidsPerDayChart data={asteroidData?.asteroidsPerDay || []}/>
                         </div>
 
                         <div className='chart-box pie-chart'>
-                            <p>Hazardous vs Safe</p>
+                            <p className='chart-title'>Hazardous vs Safe</p>
                             <HazardDistributionChart data={asteroidData?.hazardousAsteroids || []}/>
                         </div>
 
                         <div className='chart-box wide-chart'>
-                            <p>Velocity Distriubtions (km/h)</p>
+                            <p className='chart-title'>Velocity Distriubtions (km/h)</p>
                             <VelocityDistributionChart data={asteroidData?.velocityDistribution || []}/>
                         </div>
                         
