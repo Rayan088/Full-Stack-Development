@@ -121,7 +121,7 @@ const Threat_Tracker = () => {
                                 <p className='sub-title-text'>Smallest Asteroid</p>
                                 <p className='sub-title-data'>{(
                                     (asteroidData?.smallestAsteroid?.estimated_diameter.kilometers.estimated_diameter_min + 
-                                    asteroidData?.smallestAsteroid?.estimated_diameter.kilometers.estimated_diameter_max) / 2).toFixed(3)}
+                                    asteroidData?.smallestAsteroid?.estimated_diameter.kilometers.estimated_diameter_max) / 2).toFixed(3)} km
                                 </p>
                                 <p className='sub-title-info'>Diameter</p>
                             </div>
