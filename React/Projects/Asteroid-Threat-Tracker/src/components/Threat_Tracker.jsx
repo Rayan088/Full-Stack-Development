@@ -190,7 +190,7 @@ const Threat_Tracker = () => {
                         </div>
 
                         <div className='chart-box wide-chart'>
-                            <p className='chart-title'>Velocity Distriubtions (km/h)</p>
+                            <p className='chart-title'>Velocity Distributions (km/h)</p>
                             <VelocityDistributionChart data={asteroidData?.velocityDistribution || []}/>
                         </div>
                         
