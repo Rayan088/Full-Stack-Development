@@ -24,7 +24,6 @@ dist-ssr
 *.sw?
 
 /public
-/src/assets
 /eslint.config.js
 /package-lock.json
 /README.md 
