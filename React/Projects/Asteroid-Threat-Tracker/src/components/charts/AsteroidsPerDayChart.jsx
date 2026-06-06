@@ -1,11 +1,4 @@
-import {
-    BarChart,
-    Bar,
-    XAxis,
-    YAxis,
-    Tooltip,
-    ResponsiveContainer
-} from 'recharts'
+import {BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer} from 'recharts'
 
 const AsteoidsPerDayChart = ({data}) => {
     return (
@@ -19,13 +12,25 @@ const AsteoidsPerDayChart = ({data}) => {
                     </linearGradient>
                 </defs>
 
-                <XAxis dataKey="shortDate" stroke='#fff'/>
-                <YAxis stroke='#fff'/>
+                <XAxis
+                    dataKey="shortDate"
+                    axisLine={{ stroke: '#1b1f5a' }}
+                    tickLine={{ stroke: '#1b1f5a' }}
+                    tick={{ fill: '#fff' }}
+                />
+
+                <YAxis
+                    axisLine={{ stroke: '#1b1f5a' }}
+                    tickLine={{ stroke: '#1b1f5a' }}
+                    tick={{ fill: '#fff' }}
+                />
+
                 <Tooltip />
 
                 <Bar
                     dataKey="count"
-                    fill="url(#barGradient)"/>
+                    fill="url(#barGradient)"
+                    radius={[5, 5, 0, 0]}/>
                     
             </BarChart>
         </ResponsiveContainer>
