@@ -26,6 +26,5 @@ dist-ssr
 /public
 /eslint.config.js
 /package-lock.json
-/README.md 
 /vite.config.js
 /.env
