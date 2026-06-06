@@ -91,7 +91,11 @@ const Threat_Tracker = () => {
                 </div>
 
                 <div className='date'>
-                    <p>Date: 03 June 2026</p>
+                    <p>Date: {new Date().toLocaleDateString('en-GB', {
+                        day: '2-digit',
+                        month: 'long',
+                        year: 'numeric'
+                    })}</p>
                 </div>
             </div>
 
