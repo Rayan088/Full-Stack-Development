@@ -1,6 +1,6 @@
 ### Overview
 
-A real-time dashboard for monitoring near-Earrth asteroids using NASA NeoWs API. Displays live threat assessments, size comparisons, velocity data and hazard distributions for asteroids approaching Earth.
+A real-time dashboard for monitoring near-Earth asteroids using NASA NeoWs API. Displays live threat assessments, size comparisons, velocity data and hazard distributions for asteroids approaching Earth.
 
 ### Preview
 
@@ -8,7 +8,7 @@ A real-time dashboard for monitoring near-Earrth asteroids using NASA NeoWs API.
 
 ### Features
 
-- **Live NASA data** - fetches todays near-Earth object feed on load
+- **Live NASA data** - fetches today's near-Earth object feed on load
 - **6 stat cards** - closest, largest, smallest, fastest, most hazardous count, and most threatening asteroid
 - **Threat scoring** - custom algorithm scoring asteroids by size, velocity, and proximity
 - **Interactive charts** - daily counts, hazard distribution, and velocity spread
@@ -31,7 +31,7 @@ Each asteroid is scored using size, speed and miss distance:
 threatScore = ((diameter_km × velocity_kmh) / miss_distance_lunar) / 10
 
 **Closest Asteroid**  
-Minimum lunar miss distance (Lunar Years)
+Minimum lunar miss distance (Lunar Distances)
 
 **Largest Asteroid**  
 Maximum average estimated diameter (km)
@@ -43,10 +43,10 @@ Minimum average estimated diameter (km)
 Maximum relative velocity (km/h)
 
 **Hazardous Count**  
-Sum of 'is_potentially_hazardous_asteroid === true'
+Count of asteroids where 'is_potentially_hazardous_asteroid === true'
 
 ### Tech Stack
 
-**React** — UI framework  
-**Recharts** — charting library  
-**NASA NeoWs API** — asteroid data
+**React** - UI framework  
+**Recharts** - charting library  
+**NASA NeoWs API** - asteroid data
