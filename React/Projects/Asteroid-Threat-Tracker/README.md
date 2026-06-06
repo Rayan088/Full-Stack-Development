@@ -26,27 +26,27 @@ https://asteroid-threat-tracker.vercel.app/
 
 ### Calculations
 
-**Threat Score**
+**Threat Score**  
 Each asteroid is scored using size, speed and miss distance:  
 threatScore = ((diameter_km × velocity_kmh) / miss_distance_lunar) / 10
 
-**Closest Asteroid**
+**Closest Asteroid**  
 Minimum lunar miss distance (Lunar Years)
 
-**Largest Asteroid**
+**Largest Asteroid**  
 Maximum average estimated diameter (km)
 
-**Smallest Asteroid**
+**Smallest Asteroid**  
 Minimum average estimated diameter (km)
 
-**Fastest Asteroid**
+**Fastest Asteroid**  
 Maximum relative velocity (km/h)
 
-**Hazardous Count**
+**Hazardous Count**  
 Sum of 'is_potentially_hazardous_asteroid === true'
 
 ### Tech Stack
 
-**React** — UI framework
-**Recharts** — charting library
+**React** — UI framework  
+**Recharts** — charting library  
 **NASA NeoWs API** — asteroid data
