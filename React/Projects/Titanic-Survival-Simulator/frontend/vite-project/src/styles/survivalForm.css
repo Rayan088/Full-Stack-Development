@@ -1,53 +1,134 @@
-.survival-form {
-    width: 1420px;
-    padding: 35px;
+.survival-page {
     display: flex;
     flex-direction: column;
-    gap: 20px;
-    background: rgba(255, 255, 255, 0.08);
-    backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    align-items: center;
+    gap: 28px;
+}
+
+.form-header {
+    text-align: center;
+}
+
+.form-title {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 77px;
+    font-weight: 100;
+    color: #f2f3f5;
+    letter-spacing: 0.5px;
+    margin-bottom: 5px;
+}
+
+.form-subtitle {
+    font-family: "Inter", sans-serif;
+    font-size: 21px;
+    font-weight: 400;
+    color: #c7cfd8;
+    margin: 0;
+    line-height: 1.5;
+}
+
+.survival-form {
+    width: 750px;
+    height: 375px;
+    padding: 24px;
+    margin-top: -7px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 32px;
+    background: rgba(8, 22, 38, 0.55);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255,255,255,0.15);
     border-radius: 20px;
     color: white;
     box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    font-family: "Inter", sans-serif;
+    box-sizing: border-box;
 }
-
+ 
+.form-row {
+    display: grid;
+    gap: 24px;
+}
+ 
+.form-row-3 {
+    grid-template-columns: repeat(3, 1fr);
+    margin-top: -10px;
+}
+ 
+.form-row-2 {
+    grid-template-columns: repeat(2, 1fr);
+}
+ 
 .form-group {
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 6px;
+    position: relative;
 }
-
+ 
 .form-group label {
-    font-size: 15px;
-    font-weight: 600;
-    color: #d6dce5;
+    font-size: 15.7px;
+    margin-left: 4px;
+    margin-bottom: 2px;
+    font-weight: 400;
+    letter-spacing: 0.3px;
+    color: #c7cfd8;
 }
-
+ 
 .form-group input,
 .form-group select {
     width: 100%;
-    padding: 12px 15px;
-    border-radius: 10px;
-    border: 1px solid rgba(255,255,255,0.25);
-    background: rgba(255,255,255,0.9);
-    font-size: 15px;
+    padding: 18px 12px;
+    border-radius: 8px;
+    border: 1px solid rgba(255,255,255,0.15);
+    background: rgba(6, 20, 35, 0.7);
+    color: #f2f3f5;
+    font-size: 16px;
+    font-family: inherit;
     outline: none;
+    appearance: none;
+    box-sizing: border-box;
 }
-
+ 
+.form-group option {
+    background: #0b1f33;
+    color: #f2f3f5;
+}
+ 
+.form-group input::placeholder {
+    color: #7c8794;
+}
+ 
 .form-group input:focus,
 .form-group select:focus {
-    border: 2px solid black;
+    border: 1px solid #d4af37;
 }
-
-.survival-form button {
-    margin-top: 10px;
-    padding: 14px;
-    border-radius: 12px;
+ 
+.field-hint {
+    font-size: 14px;
+    margin-left: 4px;
+    color: #7c8794;
+    margin-top: 2px;
+}
+ 
+.calculate-btn {
+    padding: 25px;
+    border-radius: 8px;
     border: none;
-    background: #d4af37;
-    color: #071A2D;
-    font-size: 17px;
+    background: #A6874E;
+    color: #ffffff;
+    font-size: 19px;
     font-weight: 700;
+    letter-spacing: 1.5px;
     cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+}
+ 
+.calculate-btn:hover {
+    background: #967a45;
 }
