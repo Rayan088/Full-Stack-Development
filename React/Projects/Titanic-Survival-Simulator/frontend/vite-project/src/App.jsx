@@ -11,11 +11,14 @@ function App() {
 
     return (
         <div className="app">
-            <SurvivalForm onCalculate={() => setShowPopup(true)}/>
+          <h1>Would you Have survived the titanic</h1>
+          <h2>Step into history. Enter your details below and discover your chances based on real data from April 15 1912.</h2>
 
-            <SummaryCards />
+          <SurvivalForm onCalculate={() => setShowPopup(true)}/>
 
-            {showPopup && (<SurvivalPopup onClose={() => setShowPopup(false)}/>)}
+          <SummaryCards />
+
+          {showPopup && (<SurvivalPopup onClose={() => setShowPopup(false)}/>)}
         </div>
     );
 }
