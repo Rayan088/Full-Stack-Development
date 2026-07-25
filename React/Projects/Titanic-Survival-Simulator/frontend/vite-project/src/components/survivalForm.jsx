@@ -1,5 +1,3 @@
-import "../styles/SurvivalForm.css"
-
 function SurvivalForm({ onCalculate }) {
 
     return (

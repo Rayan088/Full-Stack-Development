@@ -37,7 +37,7 @@
 
 .form-group input:focus,
 .form-group select:focus {
-    border: 2px solid #d4af37;
+    border: 2px solid black;
 }
 
 .survival-form button {

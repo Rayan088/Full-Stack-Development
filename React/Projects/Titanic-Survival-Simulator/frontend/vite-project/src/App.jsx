@@ -2,8 +2,8 @@ import { useState } from "react";
 
 import "./App.css";
 
-import SurvivalForm from "./components/SurvivalForm";
-import SummaryCards from "./components/SummaryCards";
+import SurvivalForm from "./components/survivalForm";
+import SummaryCards from "./components/summaryCards";
 import SurvivalPopup from "./components/popup/SurvivalPopup";
 
 function App() {
@@ -11,7 +11,7 @@ function App() {
 
     return (
         <div className="app">
-          <h1>Would you Have survived the titanic</h1>
+          <h1>Would you have survived the titanic</h1>
           <h2>Step into history. Enter your details below and discover your chances based on real data from April 15 1912.</h2>
 
           <SurvivalForm onCalculate={() => setShowPopup(true)}/>
