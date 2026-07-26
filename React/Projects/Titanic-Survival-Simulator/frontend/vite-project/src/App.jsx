@@ -8,18 +8,24 @@ import SurvivalPopup from "./components/popup/SurvivalPopup";
 
 function App() {
     const [showPopup, setShowPopup] = useState(false);
+    const [prediction, setPrediction] = useState(null)
+
+    function handleCalculate(data) {
+        setPrediction(data)
+        setShowPopup(true)
+    }
 
     return (
         <div className="app">
             <div className="survival-form-container">
-                <SurvivalForm onCalculate={() => setShowPopup(true)}/>
+                <SurvivalForm onCalculate={handleCalculate}/>
             </div>
         
-        <div className="summary-cards-container">
-            <SummaryCards />
-        </div>
+            <div className="summary-cards-container">
+                <SummaryCards />
+            </div>
 
-          {showPopup && (<SurvivalPopup onClose={() => setShowPopup(false)}/>)}
+            {showPopup && (<SurvivalPopup data={prediction} onClose={() => setShowPopup(false)}/>)}
         </div>
     );
 }

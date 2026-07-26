@@ -1,5 +1,7 @@
-from flask import Blueprint, jsonify
+from flask import Blueprint, jsonify, request
 from services.survival_queries import (get_survival_by_class, get_survival_by_age, get_survival_by_gender, get_survival_by_port)
+from services.survival_predictor import predict_survival
+
 
 survival_bp = Blueprint("survival", __name__)
 
@@ -62,3 +64,12 @@ def survival_by_port():
     return jsonify(data)
 
 # Route for survival by embarkment port
+
+@survival_bp.route("/api/predict", methods=["POST"])
+def predict_survival_route():
+    data = request.json
+    result = predict_survival(data)
+
+    return jsonify(result)
+
+# Route for sending predicted data

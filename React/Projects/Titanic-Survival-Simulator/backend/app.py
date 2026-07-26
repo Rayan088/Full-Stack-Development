@@ -1,4 +1,5 @@
 from flask import Flask
+from flask_cors import CORS
 from config import Config
 from database.db import db
 
@@ -7,6 +8,7 @@ from routes.survival_routes import survival_bp
 
 app = Flask(__name__)
 app.config.from_object(Config)
+CORS(app)
 
 db.init_app(app)
 

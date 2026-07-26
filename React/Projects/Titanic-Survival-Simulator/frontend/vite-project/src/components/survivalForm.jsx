@@ -1,4 +1,28 @@
+import { useState } from "react";
+import { predictSurvival} from "../api/api"
+
 function SurvivalForm({ onCalculate }) {
+    const [formData, setFormData] = useState({
+        age: "",
+        gender: "",
+        passenger_class: "",
+        embarked: "",
+        family_size: ""
+    })
+
+    function handleChange(e) {
+        setFormData({...formData, [e.target.name]: e.target.value})
+    }
+
+    async function handleSubmit() {
+        const response = await predictSurvival({...formData,
+            age: Number(formData.age),
+            passenger_class: Number(formData.passenger_class),
+            family_size: Number(formData.family_size)
+        });
+
+        onCalculate(response);
+    }
 
     return (
         <div className="survival-page">
@@ -13,12 +37,12 @@ function SurvivalForm({ onCalculate }) {
                 <div className="form-row form-row-3">
                     <div className="form-group">
                         <label>Age</label>
-                        <input type="number" placeholder="Enter your age"/>
+                        <input type="number" name="age" value={formData.age} onChange={handleChange} placeholder="Enter your age"/>
                     </div>
 
                     <div className="form-group">
                         <label>Gender</label>
-                        <select defaultValue="">
+                        <select name="gender" value={formData.gender} onChange={handleChange}>
                             <option value="" disabled>Select gender</option>
                             <option value="male">Male</option>
                             <option value="female">Female</option>
@@ -27,7 +51,7 @@ function SurvivalForm({ onCalculate }) {
 
                     <div className="form-group">
                         <label>Passenger Class</label>
-                        <select defaultValue="">
+                        <select name="passenger_class" value={formData.passenger_class} onChange={handleChange}>
                             <option value="" disabled>Select class</option>
                             <option value="1">1st Class</option>
                             <option value="2">2nd Class</option>
@@ -39,7 +63,7 @@ function SurvivalForm({ onCalculate }) {
                 <div className="form-row form-row-2">
                     <div className="form-group">
                         <label>Embarkation Port</label>
-                        <select defaultValue="">
+                        <select name="embarked" value={formData.embarked} onChange={handleChange}>
                             <option value="" disabled>Select port</option>
                             <option value="C">Cherbourg</option>
                             <option value="Q">Queenstown</option>
@@ -49,12 +73,12 @@ function SurvivalForm({ onCalculate }) {
 
                     <div className="form-group">
                         <label>Family Size</label>
-                        <input type="number" placeholder="0"/>
+                        <input type="number" name="family_size" value={formData.family_size} onChange={handleChange} placeholder="0"/>
                         <span className="field-hint">Including yourself</span>
                     </div>
                 </div>
 
-                <button className="calculate-btn" onClick={onCalculate}>
+                <button type="button" className="calculate-btn" onClick={handleSubmit}>
                     <span>CALCULATE SURVIVAL CHANCE</span>
                 </button>
             </div>
