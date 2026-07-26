@@ -8,6 +8,9 @@ def seed_database():
     df = pd.read_csv("data/titanic.csv")
 
     with app.app_context():
+        Passenger.query.delete()
+        db.session.commit()
+        
         for _, row in df.iterrows():
 
             age = None
@@ -29,6 +32,10 @@ def seed_database():
                 )
             # Embarked location as full instead of initial
 
+            sex = None
+            if not pd.isna(row["sex"]):
+                sex = row["sex"].capitalize()
+            # Sex to be first letter capital
 
             family_size = None
 
@@ -39,7 +46,7 @@ def seed_database():
             passenger = Passenger(
                 name=row["name"],
                 age=age,
-                sex=row["sex"],
+                sex=sex,
                 passenger_class=int(row["pclass"]),
                 survived=int(row["survived"]),
                 embarked=embarked,
