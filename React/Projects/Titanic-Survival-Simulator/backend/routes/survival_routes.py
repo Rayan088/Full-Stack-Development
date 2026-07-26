@@ -3,47 +3,62 @@ from services.survival_queries import (get_survival_by_class, get_survival_by_ag
 
 survival_bp = Blueprint("survival", __name__)
 
-@survival_bp.route("/api/insights", methods=["GET"])
+@survival_bp.route("/api/insights/class", methods=["GET"])
 def survival_by_class():
+    results = get_survival_by_class()
 
-    class_results = get_survival_by_class()
-    gender_results = get_survival_by_gender()
-    age_results = get_survival_by_age()
-    port_results = get_survival_by_port()
-
-    class_data = []
-    for row in class_results:
-        class_data.append({
+    data = []
+    for row in results:
+        data.append({
             "class": row[0],
             "survival_percentage": float(row[1])
         })
 
-    gender_data = []
-    for row in gender_results:
-        gender_data.append({
+    return jsonify(data)
+
+# Route for survival by class
+
+@survival_bp.route("/api/insights/gender", methods=["GET"])
+def survival_by_gender():
+    results = get_survival_by_gender()
+
+    data = []
+    for row in results:
+        data.append({
             "gender": row[0],
             "survival_percentage": float(row[1])
         })
 
-    age_data = []
-    for row in age_results:
-        age_data.append({
+    return jsonify(data)
+
+# Route for survival by gender
+
+@survival_bp.route("/api/insights/age", methods=["GET"])
+def survival_by_age():
+    results = get_survival_by_age()
+
+    data = []
+    for row in results:
+        data.append({
             "age_group": row[0],
             "survival_percentage": float(row[1])
         })
 
-    port_data = []
-    for row in port_results:
-        port_data.append({
+    return jsonify(data)
+
+# Route for survival by age
+
+@survival_bp.route("/api/insights/port", methods=["GET"])
+def survival_by_port():
+    results = get_survival_by_port()
+
+    data = []
+    for row in results:
+        data.append({
             "port": row[0],
             "survival_percentage": float(row[1])
         })
 
-    return jsonify({
-        "class": class_data,
-        "gender": gender_data,
-        "age": age_data,
-        "port": port_data
-    })
+    return jsonify(data)
 
-# Flask route of class, gender, age and port data
+# Route for survival by embarkment port
