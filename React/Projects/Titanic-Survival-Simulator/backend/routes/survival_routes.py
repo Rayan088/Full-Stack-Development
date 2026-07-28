@@ -68,11 +68,12 @@ def survival_by_port():
 def predict_survival():
     data = request.get_json()
 
-    survival = calculate_survival(data)
-    similar_passengers = similar_passengers(data)
+    survival_percentage = calculate_survival(data)
+    similar_passengers = get_similar_passengers(data)
+    # summary = genereta_gemini_summary(data, survival)
 
     return jsonify({
-        "survival": survival,
+        "survival": survival_percentage,
         "similar_passengers": similar_passengers
     })
 
