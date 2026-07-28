@@ -1,6 +1,7 @@
 from flask import Blueprint, jsonify, request
 from services.survival_queries import (get_survival_by_class, get_survival_by_age, get_survival_by_gender, get_survival_by_port, get_similar_passengers)
 from services.survival_predictor import calculate_survival
+from services.gemini_summary import generate_summary
 
 survival_bp = Blueprint("survival", __name__)
 
@@ -64,17 +65,33 @@ def survival_by_port():
 
 # Route for survival by embarkment port
 
-@survival_bp.route("/api/predict", methods=["POST"])
+@survival_bp.route("/api/stats/survival-percentage", methods=["POST"])
 def predict_survival():
     data = request.get_json()
 
     survival_percentage = calculate_survival(data)
-    similar_passengers = get_similar_passengers(data)
-    # summary = genereta_gemini_summary(data, survival)
 
-    return jsonify({
-        "survival": survival_percentage,
-        "similar_passengers": similar_passengers
-    })
+    return jsonify({"survival_percentage": survival_percentage})
 
-# Route for sending predicted data
+# Route for calculating survival percentage
+
+@survival_bp.route("/api/stats/similar-passengers", methods=["POST"])
+def similar_passengers():
+    data = request.get_json()
+
+    passengers = get_similar_passengers(data)
+
+    return jsonify(passengers)
+
+# Route for retrieving similar passengers
+
+@survival_bp.route("/api/stats/gemini-summary", methods=["POST"])
+def gemini_summary():
+    data = request.get_json()
+    survival_percentage = calculate_survival(data)
+
+    summary = generate_summary(data, survival_percentage)
+
+    return jsonify({"summary": summary})
+
+# Route for generating Gemini summary
