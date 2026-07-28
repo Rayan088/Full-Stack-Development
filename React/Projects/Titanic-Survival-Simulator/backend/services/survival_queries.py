@@ -68,3 +68,30 @@ def get_survival_by_port():
     return result.fetchall()
 
 # Query for percentage of people survived by embarkment port
+
+def get_similar_passengers(data):
+    age = data["age"]
+    gender = data["gender"]
+    passenger_class = data["passenger_class"]
+    embarked = data["embarked"]
+    family_size = data["family_size"]
+
+    query = text("""
+        SELECT name, age, sex, passenger_class, embarked, family_size, survived
+        FROM passengers
+        WHERE sex = :gender
+        AND passenger_class = :passenger_class
+        AND embarked = :embarked
+        ORDER BY ABS(age - :age) ASC, ABS(family_size - :family_size) ASC
+        LIMIT 5
+    """)
+
+    results = db.session.execute(query, {
+        "age": age,
+        "gender": gender,
+        "passenger_class": passenger_class,
+        "embarked": embarked,
+        "family_size": family_size
+    })
+
+    return results.fetchall()
