@@ -1,0 +1,38 @@
+.summary-cards {
+    display: flex;
+    width: 1200px;
+    height: 100px;
+    justify-content: space-between;
+    align-items: center;
+    gap: 48px;
+    padding: 20px 32px;
+    background: rgba(8, 22, 38, 0.55);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid #2c2519;
+    border-radius: 14px;
+    font-family: "Inter", sans-serif;
+}
+
+.summary-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.summary-number {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 32px;
+    font-weight: 700;
+    color: #A6874E;
+    line-height: 1.2;
+}
+
+.summary-label {
+    font-size: 15px;
+    letter-spacing: 0.4px;
+    font-weight: 400;
+    color: #c7cfd8;
+    margin-top: 5px;
+}
