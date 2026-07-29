@@ -158,6 +158,6 @@ def calculate_survival(data):
         class_family_score * 0.11
     )
 
-    return {"survival_probability": int(round(survival_probability))}
+    return int(round(survival_probability))
 
 # Returns calculation of survival

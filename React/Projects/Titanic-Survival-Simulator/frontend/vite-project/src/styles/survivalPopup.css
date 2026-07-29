@@ -24,11 +24,9 @@
 }
 
 .popup-card {
-    background: rgba(255, 255, 255, 0.04);
-    border: 1px solid #967a45;
-    border-radius: 18px;
-    padding: 22px;
-    backdrop-filter: blur(8px);
+    background: rgba(8, 18, 35, 0.96);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 10px;
     height: 100%;
     color: white;
 }

@@ -1,0 +1,28 @@
+.survival-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.survival-card h2 {
+    font-size: 20px;
+    margin-bottom: 20px;
+    color: #ffffff;
+}
+
+.survival-percentage {
+    font-size: 84px;
+    font-family: "Cormorant Garamond", serif;
+    font-weight: 700;
+    color: #A6874E;
+    margin-bottom: 15px;
+}
+
+.survival-card p {
+    color: white;
+    font-size: 15px;
+    max-width: 280px;
+    line-height: 1.5;
+}

@@ -1,0 +1,26 @@
+.gemini-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.card-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.card-header h2 {
+    font-size: 18px;
+    font-weight: 600;
+    color: #A6874E;
+    margin-left: 10px;
+}
+
+.gemini-text {
+    color: rgba(255,255,255,0.85);
+    line-height: 1.6;
+    font-size: 15px;
+    margin-left: 10px;
+}

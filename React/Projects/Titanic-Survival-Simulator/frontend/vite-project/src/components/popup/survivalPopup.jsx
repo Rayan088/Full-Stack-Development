@@ -1,6 +1,6 @@
-import SurvivalChance from "./survival_chance";
-import GeminiExplanation from "./gemini_explanation";
-import SimilarPassengers from "./similar_passengers";
+import SurvivalChance from "./survivalChance";
+import GeminiExplanation from "./geminiExplanation";
+import SimilarPassengers from "./similarPassengers";
 
 import AgeChart from "./visualisations/ageChart";
 import ClassChart from "./visualisations/classChart";

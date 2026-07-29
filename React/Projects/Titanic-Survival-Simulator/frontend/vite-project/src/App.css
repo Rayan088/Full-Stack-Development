@@ -1,6 +1,9 @@
 @import "./styles/survivalForm.css";
 @import "./styles/survivalPopup.css";
 @import "./styles/summaryCards.css";
+@import "./styles/geminiExplanation.css";
+@import "./styles/survivalChance.css";
+@import "./styles/similarPassengers.css";
 
 * {
     margin: 0;

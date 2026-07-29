@@ -71,9 +71,13 @@ def get_survival_by_port():
 
 def get_similar_passengers(data):
     age = data["age"]
-    gender = data["gender"]
+    gender = data["gender"].capitalize()
     passenger_class = data["passenger_class"]
-    embarked = data["embarked"]
+    embarked_lookup = {
+        "S": "Southampton",
+        "C": "Cherbourg",
+        "Q": "Queenstown"
+    }
     family_size = data["family_size"]
 
     query = text("""
@@ -90,8 +94,21 @@ def get_similar_passengers(data):
         "age": age,
         "gender": gender,
         "passenger_class": passenger_class,
-        "embarked": embarked,
+        "embarked": embarked_lookup[data["embarked"]],
         "family_size": family_size
     })
 
-    return results.fetchall()
+    passengers = []
+
+    for row in results:
+        passengers.append({
+            "name": row[0],
+            "age": row[1],
+            "gender": row[2],
+            "passenger_class": row[3],
+            "embarked": row[4],
+            "family_size": row[5],
+            "survived": row[6]
+        })
+
+    return passengers
