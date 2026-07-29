@@ -42,8 +42,8 @@ export async function getPortInsights() {
 
 // Routes to fetch api endpoints with error messages
 
-export async function predictSurvival(passengerData) {
-    const response = await fetch (`${API}/predict`, {
+export async function getSurvivalPercentage(passengerData) {
+    const response = await fetch (`${API}/stats/survival-percentage`, {
         method: "POST", headers: {"Content-Type": "application/json"},
         body: JSON.stringify(passengerData)
     })
@@ -55,4 +55,34 @@ export async function predictSurvival(passengerData) {
     return await response.json()
 }
 
-// Route to send form data to backend
+// Route to send form data to calculate survival percentage
+
+export async function getSimilarPassengers(passengerData) {
+    const response = await fetch(`${API}/stats/similar-passengers`, {
+        method: "POST", headers: {"Content-Type": "application/json"},
+        body: JSON.stringify(passengerData)
+    });
+
+    if (!response.ok) {
+        throw new Error("Failed to retrieve similar passengers");
+    }
+
+    return await response.json();
+}
+
+// Route to send form data to calculate similar passengers
+
+export async function getGeminiSummary(passengerData) {
+    const response = await fetch(`${API}/stats/gemini-summary`, {
+        method: "POST", headers: {"Content-Type": "application/json"},
+        body: JSON.stringify(passengerData)
+    });
+
+    if (!response.ok) {
+        throw new Error("Failed to generate summary");
+    }
+
+    return await response.json();
+}
+
+// Route to send form data to generate gemini summary

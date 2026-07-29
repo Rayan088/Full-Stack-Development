@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { predictSurvival} from "../api/api"
+import { getSurvivalPercentage, getSimilarPassengers, getGeminiSummary} from "../api/api"
 
 function SurvivalForm({ onCalculate }) {
     const [formData, setFormData] = useState({
@@ -15,13 +15,22 @@ function SurvivalForm({ onCalculate }) {
     }
 
     async function handleSubmit() {
-        const response = await predictSurvival({...formData,
+        const passengerData = {
+            ...formData,
             age: Number(formData.age),
             passenger_class: Number(formData.passenger_class),
             family_size: Number(formData.family_size)
-        });
+        };
 
-        onCalculate(response);
+        const survival = await getSurvivalPercentage(passengerData);
+        const passengers = await getSimilarPassengers(passengerData);
+        const summary = await getGeminiSummary(passengerData);
+
+        onCalculate({
+            survival_percentage: survival.survival_percentage,
+            similar_passengers: passengers,
+            summary: summary.summary
+        });
     }
 
     return (
