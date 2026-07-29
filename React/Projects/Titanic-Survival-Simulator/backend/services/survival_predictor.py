@@ -45,6 +45,7 @@ def get_embarked_survival(embarked):
         SELECT ROUND(100.0 * SUM(CASE WHEN survived = 1 THEN 1 ELSE 0 END) / COUNT(*), 2)
         FROM passengers
         WHERE embarked = :embarked
+        AND embarked IS NOT NULL
     """)
 
     result = db.session.execute(query, {"embarked": embarked})
@@ -58,6 +59,7 @@ def get_age_survival(age):
         SELECT ROUND(100.0 * SUM(CASE WHEN survived = 1 THEN 1 ELSE 0 END) / COUNT(*), 2)
         FROM passengers
         WHERE age BETWEEN (:age - 7) AND (:age + 7)
+        AND age IS NOT NULL
     """)
 
     result = db.session.execute(query, {"age": age})
@@ -86,6 +88,7 @@ def get_gender_age_survival(gender, age):
         FROM passengers
         WHERE sex = :gender
         AND age BETWEEN (:age - 7) AND (:age + 7)
+        AND age IS NOT NULL
     """)
 
     result = db.session.execute(query, {"gender": gender, "age": age})
@@ -100,6 +103,7 @@ def get_class_age_survival(passenger_class, age):
         FROM passengers
         WHERE passenger_class = :passenger_class
         AND age BETWEEN (:age - 7) AND (:age + 7)
+        AND age IS NOT NULL
     """)
 
     result = db.session.execute(query, {"passenger_class": passenger_class, "age": age})
@@ -130,16 +134,16 @@ def calculate_survival(data):
     family_size = data["family_size"]
     embarked = data["embarked"]
 
-    gender_score = get_gender_survival(gender)
-    class_score = get_passenger_class_survival(passenger_class)
-    family_score = get_family_size_survival(family_size)
-    embarked_score = get_embarked_survival(embarked)
-    age_score = get_age_survival(age)
+    gender_score = float(get_gender_survival(gender) or 0)
+    class_score = float(get_passenger_class_survival(passenger_class) or 0)
+    family_score = float(get_family_size_survival(family_size) or 0)
+    embarked_score = float(get_embarked_survival(embarked) or 0)
+    age_score = float(get_age_survival(age) or 0)
 
-    gender_class_score = get_gender_class_survival(gender, passenger_class)
-    gender_age_score = get_gender_age_survival(gender, age)
-    class_age_score = get_class_age_survival(passenger_class, age)
-    class_family_score = get_class_familysize_survival(passenger_class, family_size)
+    gender_class_score = float(get_gender_class_survival(gender, passenger_class) or 0)
+    gender_age_score = float(get_gender_age_survival(gender, age) or 0)
+    class_age_score = float(get_class_age_survival(passenger_class, age) or 0)
+    class_family_score = float(get_class_familysize_survival(passenger_class, family_size) or 0)
 
     survival_probability = (
         gender_score * 0.11 +

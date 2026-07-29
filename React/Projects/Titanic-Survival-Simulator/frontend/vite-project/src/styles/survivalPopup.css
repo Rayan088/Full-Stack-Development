@@ -1,0 +1,75 @@
+.popup-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.75);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.popup {
+    width: 85%;
+    max-width: 1000px;
+    height: 90vh;
+    background: rgba(8, 18, 35, 0.96);
+    border: 1px solid #967a45;
+    border-radius: 20px;
+    padding: 35px;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    position: relative;
+    overflow: hidden;
+}
+
+.popup-card {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid #967a45;
+    border-radius: 18px;
+    padding: 22px;
+    backdrop-filter: blur(8px);
+    height: 100%;
+    color: white;
+}
+
+.close-button {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    width: 40px;
+    height: 40px;
+    border: none;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.08);
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+    transition: 0.25s;
+}
+
+.close-button:hover {
+    background: rgba(255,255,255,0.18);
+}
+
+.popup-header {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    height: 200px;
+    gap: 25px;
+}
+
+.popup-body {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    flex: 1;
+}
+
+.popup-graphs {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    flex: 1;
+    min-height: 250px;
+}
