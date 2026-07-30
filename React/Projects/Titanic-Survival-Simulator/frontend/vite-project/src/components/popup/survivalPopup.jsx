@@ -32,11 +32,11 @@ function SurvivalPopup({ data, onClose }) {
 
                     <div className="popup-graphs">
                         <div className="popup-card">
-                            <GenderChart />
+                            <ClassChart />
                         </div>
 
                         <div className="popup-card">
-                            <ClassChart />
+                            <GenderChart />
                         </div>
 
                         <div className="popup-card">
