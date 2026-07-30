@@ -7,20 +7,24 @@
 .card-header {
     display: flex;
     align-items: center;
-    gap: 10px;
-    margin-bottom: 15px;
+    margin-bottom: 5px;
 }
 
 .card-header h2 {
+    font-family: "Cormorant Garamond", serif;
+    font-weight: 600;
+    letter-spacing: .03em;
     font-size: 18px;
     font-weight: 600;
     color: #A6874E;
-    margin-left: 10px;
+    margin-left: 15px;
+    margin-top: -20px;
 }
 
 .gemini-text {
-    color: rgba(255,255,255,0.85);
+    color: #d6dde8;
     line-height: 1.6;
     font-size: 15px;
-    margin-left: 10px;
+    margin-left: 15px;
+    max-width: 420px;
 }

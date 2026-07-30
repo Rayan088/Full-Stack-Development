@@ -13,16 +13,19 @@
 }
 
 .survival-percentage {
-    font-size: 84px;
+    font-size: 110px;
     font-family: "Cormorant Garamond", serif;
     font-weight: 700;
     color: #A6874E;
-    margin-bottom: 15px;
+    margin-bottom: 5px;
 }
 
 .survival-card p {
-    color: white;
-    font-size: 15px;
+    color:#d6dde8;
+    font-family: "Cormorant Garamond", serif;
+    font-weight: 100;
+    letter-spacing: .08em;
+    font-size: 18px;
     max-width: 280px;
     line-height: 1.5;
 }

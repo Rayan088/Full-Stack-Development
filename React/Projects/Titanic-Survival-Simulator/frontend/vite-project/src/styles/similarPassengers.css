@@ -5,6 +5,9 @@
 }
 
 .section-header h2{
+    font-family: "Cormorant Garamond", serif;
+    font-weight: 600;
+    letter-spacing: .03em;
     margin-top: 10px;
     font-size: 18px;
     color: #A6874E;
@@ -30,15 +33,16 @@
 .passenger-table th{
     text-align:center;
     padding:9px;
-    font-weight:600;
+    font-weight:500;
     color:#d6dde8;
     font-size:0.9rem;
 }
 
 .passenger-table td{
     padding:9px;
-    border-top:1px solid rgba(255,255,255,0.05);
-    color:#f1f5f9;
+    border-top: 1px solid rgba(255,255,255,0.05);
+    font-weight: 100;
+    color:#d6dde8;
     font-size:0.92rem;
     text-align: center;
 }
