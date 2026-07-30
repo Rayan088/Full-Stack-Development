@@ -34,9 +34,9 @@ function ClassChart() {
                         <XAxis
                             dataKey="class"
                             tickFormatter={(value) => CLASS_LABELS[value]}
-                            tick={{ fontSize: 13, fill: "#d6dde8" }}/>
+                            tick={{ fontSize: 13, fill: "#d6dde8"}} axisLine={{ stroke: "#d6dde8" }} tickLine={{ stroke: "#d6dde8" }}/>
 
-                        <YAxis unit="%" domain={[0, 65]} tick={{ fontSize: 13, fill: "#d6dde8" }}/>
+                        <YAxis unit="%" domain={[0, 65]} tick={{ fontSize: 13, fill: "#d6dde8"}} axisLine={{ stroke: "#d6dde8" }} tickLine={{ stroke: "#d6dde8" }}/>
                         
                         <Tooltip
                             formatter={(value) => `${value}%`}

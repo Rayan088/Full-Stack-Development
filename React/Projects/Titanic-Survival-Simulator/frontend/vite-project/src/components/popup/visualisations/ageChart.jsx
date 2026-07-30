@@ -12,16 +12,16 @@ function AgeChart() {
     return (
         <div style={{ width: "100%" }}>
             <h2 style={{ fontSize: "14px", fontFamily: '"Cormorant Garamond", serif', textAlign: "center", color: "#A6874E", marginTop: "10px"}}
-            >SURVIVAL BY AGE GROUP</h2>
+            >SURVIVAL BY AGE</h2>
             <div style={{ width: "100%", height: 200 }}>
                 <ResponsiveContainer width="100%" height="100%">
                     <BarChart
                         data={data}
                         margin={{ top: 20, right: 10, left: -16, bottom: -13 }}>
 
-                        <XAxis dataKey="age_group" tick={{ fontSize: 13, fill: "#d6dde8" }}/>
+                        <XAxis dataKey="age_group" tick={{ fontSize: 13, fill: "#d6dde8"}} axisLine={{ stroke: "#d6dde8" }} tickLine={{ stroke: "#d6dde8" }}/>
 
-                        <YAxis unit="%" domain={[0, 65]} tick={{ fontSize: 13, fill: "#d6dde8" }}/>
+                        <YAxis unit="%" domain={[0, 65]} tick={{ fontSize: 13, fill: "#d6dde8"}} axisLine={{ stroke: "#d6dde8" }} tickLine={{ stroke: "#d6dde8" }}/>
                         
                         <Tooltip formatter={(value) => `${value}%`} />
                         
